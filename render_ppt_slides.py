@@ -96,7 +96,7 @@ def render_slide(slide, slide_num, total_slides, output_path):
 
 def main():
     """主函数"""
-    pptx_file = "WebLeaper组会展示.pptx"
+    pptx_file = "WebLeaper专业组会展示.pptx"
     output_dir = "screenshots"
 
     if not os.path.exists(pptx_file):

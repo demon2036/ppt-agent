@@ -1,0 +1,337 @@
+\documentclass[dvipsnames]{article} %
+\usepackage{colm2024_conference}
+
+% ========== 基础数学 ==========
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\let\AMSmathOverline\overline
+
+
+% ========== 字符/编码 ==========
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+% ========== 图形 / 绘图 ==========
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{er,positioning,bayesnet,tikzmark} % 合并tikz库一次性加载
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{wrapfig}
+
+% ========== 表格相关 ==========
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{xltabular}
+\usepackage{tabularx}
+\usepackage{threeparttable}
+\usepackage{rotating}
+
+\usepackage{tablefootnote}
+\usepackage{arydshln}
+\usepackage{hhline}
+
+% ========== 颜色与超链接 ==========
+\usepackage{xcolor}
+\definecolor{lightgray}{rgb}{0.9,0.9,0.9}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{url}
+
+% ========== 文字排版美化 ==========
+\usepackage{microtype}
+\usepackage{nicefrac}
+\usepackage{setspace}
+% \usepackage[normalem]{ulem}  % 保留emph正常格式
+% \useunder{\uline}{\ul}{}
+
+% ========== 特殊字符与符号 ==========
+\usepackage[misc]{ifsym}
+\usepackage{pifont}
+\usepackage{fontawesome}
+\usepackage{tipa}
+\usepackage{siunitx}
+\usepackage{subscript}
+\usepackage{mathrsfs}
+\usepackage{latexsym}
+\usepackage{inconsolata}
+
+% ========== 代码显示 ==========
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{verbatim}
+
+% ========== 盒子环境（tcolorbox） ==========
+\usepackage[raster,skins,most]{tcolorbox}
+
+% ========== figure caption 相关（顺序很关键） ==========
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ========== 算法环境（只选一个） ==========
+% 保留 algorithm2e，去掉 algpseudocode 避免冲突
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\SetKw{Continue}{continue}
+
+% ========== 其他需求包 ==========
+\usepackage{enumitem}
+\usepackage{blindtext}
+
+
+\newtheorem{proposition}{Proposition}
+
+% \newcommand{\w}{\texttt{WebComposer}}
+\newcommand{\w}{WebLeaper}
+% \newcommand{\is}{\texttt{nformation-Seeking}}
+
+
+% 我得packages
+
+% \useunder{\uline}{\ul}{}
+
+\renewcommand*\ttdefault{cmtt}
+\input{math_commands.tex}
+
+\renewcommand{\mslink}{https://modelscope.cn/datasets/iic/WebLeaper}
+\renewcommand{\ghlink}{https://github.com/Alibaba-NLP/DeepResearch}
+% 如果不需要 hflink，可保持原值，或者：
+% \renewcommand{\hflink}{https://huggingface.co/datasets/Alibaba-NLP/WebLeaper}
+
+
+% https://huggingface.co/datasets/Alibaba-NLP/WebComposer
+% https://modelscope.cn/datasets/iic/WebComposer
+
+
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+\newcommand*\justify{%
+  \fontdimen2\font=0.4em% interword space
+  \fontdimen3\font=0.2em% interword stretch
+  \fontdimen4\font=0.1em% interword shrink
+  \fontdimen7\font=0.1em% extra space
+  \hyphenchar\font=`\-% allowing hyphenation
+}
+
+% \renewcommand{\texttt}[1]{%
+%   \begingroup
+%   \ttfamily
+%   \begingroup\lccode`~=`/\lowercase{\endgroup\def~}{/\discretionary{}{}{}}%
+%   \begingroup\lccode`~=`[\lowercase{\endgroup\def~}{[\discretionary{}{}{}}%
+%   \begingroup\lccode`~=`.\lowercase{\endgroup\def~}{.\discretionary{}{}{}}%
+%   \catcode`/=\active\catcode`[=\active\catcode`.=\active
+%   \justify\scantokens{#1\noexpand}%
+%   \endgroup
+% }
+
+\newcommand{\yes}{\color{green!60!black}\ding{52}}
+\newcommand{\no}{\color{red!60!black}\ding{56}}
+\newcommand{\both}{\color{blue!60!black}\ding{117}}
+\usepackage{makecell}
+\usetikzlibrary{tikzmark}
+\makeatletter
+\newcommand*\myfontsize{%
+  \@setfontsize\myfontsize{7}{8}%
+}
+\makeatother
+
+\definecolor{uclablue}{RGB}{159, 195, 224}
+\newcommand{\uclablue}{\cellcolor{uclablue}}
+\definecolor{uclagold}{RGB}{255, 240, 180}
+\newcommand{\uclagold}{\cellcolor{uclagold}}
+\newcommand{\jialong}[1]{{\color{blue}{#1}}}
+\newcommand{\sw}[1]{{\color{blue}{#1}}}
+\newcommand{\rolnan}[1]{{\color{red}{#1}}}
+\newcommand{\minhao}[1]{{\color{green}{#1}}}
+\definecolor{aliceblue}{RGB}{255, 238, 241}
+\newcommand{\CC}{\cellcolor{aliceblue}}
+
+\newcommand{\mytextbox}[2]{\tikzmarknode[draw=#1,thick,inner sep=2pt]{test}{\myfontsize #2}}
+\newcommand{\mygreen}[1]{\textcolor{green}{#1}}
+\definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
+\newcommand{\mydarkgreen}[1]{\textcolor{cadmiumgreen}{#1}}
+\definecolor{myred}{rgb}{0.7, 0.3, 0.0}
+\definecolor{myblue}{rgb}{0.2, 0.3, 0.6}
+\definecolor{babygreen}{rgb}{0.85, 0.97, 0.85}
+\newcommand{\CG}{\cellcolor{babygreen}}
+
+\newcommand{\rcup}{\cup}
+
+
+
+\definecolor{purple1}{RGB}{126, 107, 196}
+\definecolor{purple2}{RGB}{199, 158, 207}
+\definecolor{purple3}{RGB}{214, 200, 255}
+\definecolor{purple4}{RGB}{254, 240, 255}
+\definecolor{custompurple}{HTML}{491f97}
+\definecolor{deepblue}{RGB}{48, 58, 82}
+\definecolor{darkred}{HTML}{C00000}
+\newcommand{\thinkl}{\mytextbox{deepblue}{\textbf{\textcolor{deepblue}{<think>}}}}
+
+\newcommand{\thinkr}{\mytextbox{deepblue}{\textbf{\textcolor{deepblue}{</think>}}}}
+
+\newcommand{\calll}{\mytextbox{deepblue}{\textbf{\textcolor{deepblue}{<tool\_call>}}}}
+
+\newcommand{\callr}{\mytextbox{deepblue}{\textbf{\textcolor{deepblue}{</tool\_call>}}}}
+
+\newcommand{\responsel}{\mytextbox{deepblue}{\textbf{\textcolor{deepblue}{<tool\_response>}}}}
+
+\newcommand{\responser}{\mytextbox{deepblue}{\textbf{\textcolor{deepblue}{</tool\_response>}}}}
+
+\newcommand{\answerl}{\mytextbox{deepblue}{\textbf{\textcolor{deepblue}{<answer>}}}}
+
+\newcommand{\answerr}{\mytextbox{deepblue}{\textbf{\textcolor{deepblue}{</answer>}}}}
+
+
+\newcommand{\symboletongyi}{\raisebox{0pt}{~\includegraphics[scale=0.012]{figures/tongyi.jpg}}~}
+
+\definecolor{deepPurple}{HTML}{330066}
+% \definecolor{electricviolet}{rgb}{0.56, 0.0, 1.0
+\newcommand{\email}[1]{\href{mailto:#1}{\textcolor{deepPurple}{\texttt{#1}}}}
+% \title{WebMaster: Unleashing Deeper Information Seeking Agency from }
+% 
+% \title{From Exploration to Agency: Evolving into  a WebMaster}
+\definecolor{uclablue_old}{rgb}{0.15, 0.45, 0.68}
+\hypersetup{
+    breaklinks,
+    citecolor=uclablue_old,
+    colorlinks=true,
+    % linkcolor=uclablue
+}
+
+
+% 我的define
+\newtcolorbox{mybox}[2][]
+  {colback = black!5!white, colframe = black!75!black, fonttitle = \bfseries,
+    colbacktitle = black!100!black, enhanced, before upper={\fontsize{8}{11}\obeyspaces\obeylines\selectfont}, fontupper=\selectfont,
+    attach boxed title to top left={yshift=-2.2mm,xshift=4mm},
+    title=#2,#1}
+
+
+\let\overline\AMSmathOverline
+
+
+
+% \title{\w: Empowering Efficiency and Efficacy in WebAgent via Enabling Info-Rich Seeking}
+
+\title{%
+\raisebox{-2.3em}{
+  \parbox[t]{0.35in}{\includegraphics[width=0.6in]{logo/webleaper.jpg}} % 使用 \parbox 放置 logo，并添加一些水平间距
+}
+\begin{tabular}[t]{l} % 注意这里是 c，不是 l
+  \parbox[t]{0.8\textwidth}{\centering % 加了\centering实现居中
+    \w: Empowering Efficiency and Efficacy in WebAgent via Enabling Info-Rich Seeking
+  }
+\end{tabular}
+}
+
+% WebProber
+% WebPilot
+% WebPioneer
+
+
+
+
+\author{%
+\small{Zhengwei Tao$^{*}$$^{(\textrm{\Letter})}$, Haiyang Shen$^{*}$, Baixuan Li$^{*}$, Wenbiao Yin$^{(\textrm{\Letter})}$, Jialong Wu, Kuan Li, Zhongwang Zhang, Huifeng Yin, Rui Ye, Liwen Zhang, Xinyu Wang, Pengjun Xie, Jingren Zhou, Yong Jiang$^{(\textrm{\Letter})}$}%
+  \\[1em]               % ← 在上一行末尾插入 1 em 的竖直间距，相当于“空一行”
+  % ======================== 机构信息（放大字体，可加粗）=====================
+  {\fontsize{10pt}{11pt}\selectfont          % \large 放大字号；\bfseries 视需要加粗
+Tongyi Lab\symboletongyi, Alibaba Group}\\
+}
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+
+\begin{document}
+
+\maketitle
+
+\begingroup
+  \renewcommand\thefootnote{*} % 把当前脚注编号改成 \Letter 
+   \footnotetext{Equal contribution. }
+\endgroup
+
+\begingroup
+\renewcommand\thefootnote{$^{\textrm{\Letter}}$}% 去掉编号
+\footnotetext{Correspondence to: \texttt{tttzw@stu.pku.edu.cn}, \texttt{\{yinwenbiao.ywb, yongjiang.jy\}@alibaba-inc.com}.}
+\endgroup
+
+% \begingroup
+%   \renewcommand\thefootnote{*} % 把当前脚注编号改成 \Letter 
+%    \footnotetext{denotes equal contribution. $^{\textrm{\Letter}}$~ denotes the correspondence. \{yinwenbiao.ywb, yongjiang.yj\}@alibaba-inc.com} % 这一行会出现在本页最底部
+% \endgroup
+
+\begin{abstract}
+
+Large Language Model (LLM)-based agents have emerged as a transformative approach for open-ended problem solving, with information seeking (IS) being a core capability that enables autonomous reasoning and decision-making. 
+While prior research has largely focused on improving retrieval depth, we observe that current IS agents often suffer from \textit{low search efficiency}, which in turn constrains overall performance. 
+A key factor underlying this inefficiency is the sparsity of target entities in training tasks, which limits opportunities for agents to learn and generalize efficient search behaviors.
+To address these challenges, we propose \w, a framework for constructing high-coverage IS tasks and generating efficient solution trajectories.
+We formulate IS as a tree-structured reasoning problem, enabling a substantially larger set of target entities to be embedded within a constrained context. 
+Leveraging curated Wikipedia tables, we propose three variants for synthesizing IS tasks—\texttt{Basic}, \texttt{Union}, and \texttt{Reverse-Union}—to systematically increase both IS efficiency and efficacy. Finally, we curate training trajectories by retaining only those that are simultaneously accurate and efficient, ensuring that the model is optimized for both correctness and search performance.
+Extensive experiments on both basic and comprehensive settings, conducted on five IS benchmarks—BrowserComp, GAIA, xbench-DeepSearch, WideSearch, and Seal-0—demonstrate that our method consistently achieves improvements in both effectiveness and efficiency over strong baselines.
+
+\end{abstract}
+
+% \begin{figure*}[h]
+%     \centering
+%     \includegraphics[width=0.8\linewidth]{Figs/intro.pdf}
+%     \caption{Results on GAIA information-seeking subset among the cutting-edge Deep Research models or systems.
+%     $^*$ denotes the results using our two browsing tools via function calling APIs.}
+%     \label{fig: intro}
+% \end{figure*}
+
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=1.1\linewidth]{figures/abs_fig.pdf}
+%     \caption{Caption}
+%     \label{fig:abs_fig}
+% \end{figure}
+
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=1.0\linewidth]{figures/abs_fig_bc.pdf}
+%     \caption{Performance on the BrowseComp-en/zh benchmarks. DeepSeek-R1-Browse is DeepSeek-R1 equipped with browsing tools via the ReAct framework, sharing the same implementation as our model, WebSailor. Doubao-Search and Grok-3 are proprietary web-based products. The result for GPT-4o with browsing is taken from OpenAI's official publication.}
+%     \label{fig:abs_fig}
+% \end{figure}
+% \vfill
+
+% \newpage
+
+
+
+
+
+% \input{content/outline.tex}
+\input{sections/1-introduction}
+\input{sections/2-definition}
+\input{sections/3-method}
+\input{sections/4-experiments}
+\input{sections/5-related_work}
+\input{sections/6-conclusion}
+
+
+
+
+
+
+\clearpage
+\bibliography{biblio}
+\bibliographystyle{colm2024_conference}
+
+\clearpage
+\appendix
+\input{sections/appendix}
+
+
+\end{document}

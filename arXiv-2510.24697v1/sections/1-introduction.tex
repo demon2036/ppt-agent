@@ -1,0 +1,59 @@
+\begin{figure*}[h]
+\setlength{\abovecaptionskip}{-2pt}   % caption 与图/表之间距离
+\setlength{\belowcaptionskip}{-2pt}  % caption 与正文(或下一浮动体)的距离
+    \centering
+    \includegraphics[width=1\textwidth]{figures/main_results.pdf}
+    \caption{Results on comprehensive training setting. All  \w~scores are averaged over three runs. The metric of the first three figures are accuracy. ``SR'' denotes Success Rate on WideSearch.}
+    \label{fig:main_results}
+    \vspace{-1em}
+\end{figure*}
+
+
+\section{Introduction}
+\label{sec:introduction}
+
+
+
+The LLM-based agents mark a paradigm shift in AI, delivering transformative solutions to challenges once deemed intractable across diverse domains~\citep{guo2024large, mplug-owl}.
+Among their core capabilities, information seeking (IS) plays a crucial role in enabling the cognitive autonomy of these agents. This ability not only drives their adaptability in open-ended tasks but also underpins a new generation of powerful commercial systems, including OpenAI Deep Research~\citep{openaidr}, Google’s Gemini~\citep{geminidr}, and Perplexity AI~\citep{perplexity}, Kimi-Researcher~\citep{kimi_researcher}.
+
+While numerous studies have sought to enhance the IS capabilities of agents through complex question–answering pipelines and advanced fine-tuning strategies~\citep{wu2025webdancerautonomousinformationseeking,li2025websailornavigatingsuperhumanreasoning,li2025websailorv2bridgingchasmproprietary,tao2025webshaper,qiao2025webresearcher,lu2025deepdive}, most existing approaches primarily concentrate on improving the search depth, giving comparatively little attention to search efficiency.
+Our preliminary experiments indicate that current LLM-based agents search inefficiently.
+As shown in Figure~\ref{fig:infogain_cover_rate_kde}, the distribution of valid actions for a competitive IS agent peaks around 0.04, meaning that in most cases, only a small fraction of actions are effective~\citep{wong2025widesearch, xue2025simpletir}.
+This low valid-action rate reflects suboptimal search behaviors, including redundant query reformulations, retrieval of irrelevant information, and unnecessarily long search chains.
+Such inefficiencies not only increase computational and time costs but also limit the agent’s overall IS performance.
+
+\begin{wrapfigure}{r}{0.5\linewidth}
+\vspace{-3em} % 上方间距
+    \centering
+    \includegraphics[width=0.99\linewidth]{figures/infogain_cover_rate_kde.pdf}
+    % \vspace{-2em}
+    \caption{The distribution of valid actions of the agent based on the GPT model on our synthesized IS task. The valid actions are those seeking the correct target entities required by the question.}
+    % \vspace{-2em} % 下方间距
+    \label{fig:infogain_cover_rate_kde}
+\end{wrapfigure}
+
+The design of synthetic training tasks incurs this inefficiency. In typical IS agent setups, the agent begins with a set of known entities and incrementally gathers information to infer all target entities. However, prior work often constructs tasks in which the target entities are overly sparse~\citep{wu2025webdancerautonomousinformationseeking,li2025websailornavigatingsuperhumanreasoning,li2025websailorv2bridgingchasmproprietary}. 
+Such sparsity limits the agent’s exposure to informative cues, reducing opportunities to learn to locate relevant information within a constrained context window. As a result, the agent spends more actions processing irrelevant content, weakening its search strategies, leading to lower performance.
+Furthermore, it can bias the measurement of search efficiency, which we prove in a later section. This bias makes it difficult to obtain an accurate training signal, thereby obstructing the systematic learning of more efficient search behaviors. These limitations underscore the need to redesign training tasks, enabling optimized seeking efficiency and stronger IS capabilities.
+
+
+To address these challenges, we propose \w, a framework designed with two core objectives: (1) to construct new IS tasks containing a substantially larger number of target entities; and (2) to generate solution trajectories that achieve both high accuracy and high efficiency. For the first objective, we model the IS process as a tree-structured reasoning task, which compactly accommodates more target nodes within a limited context. Based on this formulation, we systematically increase task complexity through three dataset variants. First, leveraging curated Wikipedia tables, we synthesize \underline{\textbf{\texttt{Basic}}} version, which directly addresses the challenge of entity sparsity by creating a high-density search space within a single, structured source. To mirror more realistic scenarios that demand integrating information from multiple sources, our \underline{\textbf{\texttt{Union}}} variant constructs tasks that require synthesizing facts across different sources, thereby increasing search ambiguity. Finally, to mitigate the risk of agents adopting simplistic, keyword-based shortcuts, the \underline{\textbf{\texttt{Reverse-Union}}} variant reverses the logical flow, compelling the agent to first deduce intermediate entities from scattered clues before completing the main search task.
+For the second objective, we construct task-completion trajectories that are filtered according to \emph{Information-Seeking Rate} (ISR) and \emph{Information-Seeking Efficiency} (ISE), retaining only those that solve the task both accurately and efficiently. 
+These metrics are then incorporated into the hybrid reward system during the following reinforcement learning stage.
+Models trained on this curated dataset after supervised-finetuning and reinforcement learning yield our final IS agent.
+
+We conduct extensive experiments on both basic and comprehensive settings to evaluate our approach across five benchmarks: BrowserComp~\citep{bc_en}, GAIA~\citep{mialon2023gaia}, Seal-0~\citep{pham2025sealqa}, WideSearch~\citep{wong2025widesearch}, and xbench-DeepSearch~\citep{xbench}. Our method achieves consistent improvements on all benchmarks. Ablation studies on the dataset design further confirm the effectiveness of our proposed components. We summarize our contribution as follows:
+
+\vspace{-5pt}
+\begin{itemize}[left=0.2cm]\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}\setlength{\topsep}{-5pt}
+    \item  We design a new information-seeking task formulation on a tree-structured reasoning problem, leading to the inclusion of a substantially larger set of target entities within a constrained context. Based on this formulation, we construct the \emph{Basic}, \emph{Union}, and \emph{Reverse-Union} datasets.
+    \item We generate and filter task-solving trajectories using the proposed \emph{Information-Seeking Rate} (ISR) and \emph{Information-Seeking Efficiency} (ISE) metrics, retaining only those trajectories that solve tasks both accurately and efficiently. These metrics are also designed for our hybrid RL reward system.
+    \item  We conduct extensive experiments on five public IS benchmarks, BrowserComp, GAIA, Xbench-DeepSearch, WideSearch, and Seal-0, achieving consistent improvements over strong baselines. 
+\end{itemize}
+
+
+
+
+
+

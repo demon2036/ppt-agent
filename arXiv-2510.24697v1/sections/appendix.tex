@@ -1,0 +1,357 @@
+\newpage
+\section{Appendix}
+\label{sec:appendix}
+
+\subsection{Declaration on the Use of LLMs}
+We declare that the use of LLMs during the preparation of this manuscript was strictly limited to language-related assistance, such as sentence refinement and grammatical correction. All substantive content was independently authored by the authors and rigorously reviewed and verified following any LLM-assisted modifications. During the experiments, all usage of LLMs was solely for academic research purposes, with no inappropriate applications. Detailed experimental settings are provided in the Experiments section of this paper. No other reliance on LLMs is involved in this work.
+
+\subsection{Proof of Proposition~\ref{prop:var_reduction}}
+\label{sec:appendix_proof_ise}
+
+This appendix provides the detailed mathematical derivation for Proposition~\ref{prop:var_reduction}, as presented in Section~\ref{subsec:quantifying_collection}. The purpose of this proof is to formally establish that the variance of the Information-Seeking Efficiency (ISE) metric is inversely proportional to $n$, the number of required entities. This property, $\mathrm{Var}(\mathrm{ISE}) = \mathcal{O}(1/n)$, demonstrates that ISE becomes an increasingly stable and reliable performance measure as the complexity of the task (i.e., the size of $n$) grows.
+
+% \begin{proof}
+% Recall from the main text that the Information-Seeking Efficiency~(ISE) is defined as
+% \begin{equation}
+% \mathrm{ISE} = \frac{n}{T},
+% \end{equation}
+% where $T$ is the total number of action steps taken to discover all $n$ required distinct entities in the set $R$.
+
+% \vspace{0.5em}
+% \noindent\textbf{Step 1: Modelling the random variables.}
+% Let $X_i$ denote the number of steps the agent spends to discover the $i$-th new required entity in $R$.  
+% By assumption:
+% \begin{itemize}
+%     \item $X_1,\dots,X_n$ are independent and identically distributed.
+%     \item $\mu := \mathbb{E}[X_i] > 0$ (finite mean).
+%     \item $\sigma^2 := \mathrm{Var}(X_i) < \infty$ (finite variance).
+%     \item $X_i > 0$ almost surely (each discovery takes a positive number of steps).
+% \end{itemize}
+% The total number of steps is
+% \[
+% T = \sum_{i=1}^n X_i.
+% \]
+
+% \vspace{0.5em}
+% \noindent\textbf{Step 2: Sample mean and basic properties.}
+% Define the sample mean
+% \[
+% \overline{X} := \frac{T}{n} = \frac{1}{n} \sum_{i=1}^n X_i.
+% \]
+% By standard properties of i.i.d.\ random variables:
+% \begin{equation}
+% \mathbb{E}[\overline{X}] = \mu,\quad
+% \mathrm{Var}(\overline{X}) = \frac{\sigma^2}{n}.
+% \label{eq:meanvar_xbar}
+% \end{equation}
+% From the ISE definition Eq.(\ref{eq:ISE}), we have the exact identity
+% \[
+% \mathrm{ISE} = \frac{1}{\overline{X}}.
+% \]
+
+% \vspace{0.5em}
+% \noindent\textbf{Step 3: Reduction to the variance of a smooth function.}
+% We have $\mathrm{ISE} = f(\overline{X})$ with $f(x) = x^{-1}$.  
+% Since $\mu > 0$ and $X_i > 0$ a.s., the function $f$ is infinitely differentiable in a neighborhood of $\mu$.
+
+% Write 
+% \[
+% \delta_n := \overline{X} - \mu
+% \]
+% so that $\mathbb{E}[\delta_n] = 0$ and $\mathrm{Var}(\delta_n) = \sigma^2/n$.  
+% By the Strong Law of Large Numbers, $\delta_n \to 0$ almost surely as $n \to \infty$.  
+% Thus, for large $n$, with high probability $|\delta_n| < \mu/2$, ensuring that a Taylor expansion of $f$ around $\mu$ is valid.
+
+% \vspace{0.5em}
+% \noindent\textbf{Step 4: Taylor expansion with remainder control.}
+% On the event $\{|\delta_n| < \mu/2\}$, we expand $f(\mu + \delta_n)$ using Taylor's theorem to second order:
+% \begin{equation}
+% \frac{1}{\mu + \delta_n}
+% = \frac{1}{\mu} - \frac{\delta_n}{\mu^2} + \frac{\delta_n^2}{\mu^3} + R_3(\delta_n),
+% \label{eq:taylor}
+% \end{equation}
+% where the remainder term satisfies $|R_3(\delta_n)| \le C |\delta_n|^3$ for some $C>0$ depending only on $\mu$.
+
+% \vspace{0.5em}
+% \noindent\textbf{Step 5: Mean and second moment calculations.}
+% From Eq.(\ref{eq:taylor}):
+% \begin{align}
+% \mathbb{E}\left[ \frac{1}{\overline{X}} \right] 
+% &= \frac{1}{\mu} + \frac{\mathbb{E}[\delta_n^2]}{\mu^3} + \mathbb{E}[R_3(\delta_n)], \label{eq:mean_ise} \\
+% \mathbb{E}\left[ \frac{1}{\overline{X}^2} \right]
+% &= \frac{1}{\mu^2} + \frac{\mathbb{E}[\delta_n^2]}{\mu^4} + O\!\left( \mathbb{E}[|\delta_n|^3] \right). \label{eq:secondmoment_ise}
+% \end{align}
+% By Eq.(\ref{eq:meanvar_xbar}), $\mathbb{E}[\delta_n^2] = \sigma^2/n$.  
+% Also, finite variance plus Hölder's inequality yields $\mathbb{E}[|\delta_n|^3] = O(n^{-3/2})$.
+
+% Therefore:
+% \begin{align}
+% \mathbb{E}[1/\overline{X}]
+% &= \frac{1}{\mu} + \frac{\sigma^2}{\mu^3\,n} + o\!\left(\frac{1}{n}\right), \\
+% \mathbb{E}[1/\overline{X}^2]
+% &= \frac{1}{\mu^2} + \frac{\sigma^2}{\mu^4\,n} + o\!\left(\frac{1}{n}\right).
+% \end{align}
+
+% \vspace{0.5em}
+% \noindent\textbf{Step 6: Computing the variance.}
+% Using $\mathrm{Var}(Y) = \mathbb{E}[Y^2] - (\mathbb{E}[Y])^2$ with $Y = 1/\overline{X}$:
+% \begin{align*}
+% \mathrm{Var}(\mathrm{ISE})
+% &= \left( \frac{1}{\mu^2} + \frac{\sigma^2}{\mu^4\,n} + o\!\left(\frac{1}{n}\right) \right)
+%  - \left( \frac{1}{\mu} + \frac{\sigma^2}{\mu^3\,n} + o\!\left(\frac{1}{n}\right) \right)^2 \\
+% &= \frac{\sigma^2}{\mu^4\,n} + o\!\left(\frac{1}{n}\right),
+% \end{align*}
+% where the constant term $\frac{1}{\mu^2}$ cancels exactly.
+
+% \vspace{0.5em}
+% \noindent\textbf{Step 7: Conclusion.}
+% We have shown that
+% \[
+% \mathrm{Var}(\mathrm{ISE}) = \frac{\sigma^2}{\mu^4\,n} + o\!\left(\frac{1}{n}\right),
+% \]
+% which in particular implies the order bound $\mathrm{Var}(\mathrm{ISE}) = \mathcal{O}(n^{-1})$.
+
+% This completes the proof.
+% \end{proof}
+
+
+
+\begin{proof}
+Let $X_i$ be the number of steps the agent takes to discover the $i$-th new entity in the required set $R$. We assume $\{X_i\}_{i=1}^n$ are independent and identically distributed (i.i.d.) random variables with mean $\mathbb{E}[X_i] = \mu$ and variance $\mathrm{Var}(X_i) = \sigma^2$.
+
+The total number of steps is $T = \sum_{i=1}^n X_i$. Let $\overline{X}$ be the average number of steps to find one required entity, defined as $\overline{X} = \frac{1}{n} \sum_{i=1}^n X_i = \frac{T}{n}$. By definition, $\mathrm{ISE} = n/T = 1/\overline{X}$.
+
+From the properties of i.i.d. random variables, the mean and variance of $\overline{X}$ are:
+\begin{align}
+\mathbb{E}[\overline{X}] &= \mu, \\
+\mathrm{Var}(\overline{X}) &= \frac{\sigma^2}{n}. \label{eq:var_xbar_appendix}
+\end{align}
+We are interested in the variance of $\mathrm{ISE}$, which is a function of the random variable $\overline{X}$. Let this function be $f(\overline{X}) = 1/\overline{X}$. We can approximate the variance of $\mathrm{ISE}$ using the Delta method, which states that for a function $f$ with a non-zero derivative at $\mu$:
+\[
+\mathrm{Var}(f(\overline{X})) \approx \left(f'(\mathbb{E}[\overline{X}])\right)^2 \mathrm{Var}(\overline{X}).
+\]
+First, we compute the derivative of $f(x) = 1/x$, which is $f'(x) = -x^{-2}$. Evaluating this derivative at the mean $\mu$:
+\[
+f'(\mu) = -\mu^{-2}.
+\]
+Now, substituting this and the variance of $\overline{X}$ from Equation~(\ref{eq:var_xbar_appendix}) into the Delta method formula:
+\[
+\mathrm{Var}(\mathrm{ISE}) \approx \left( -\mu^{-2} \right)^{2} \cdot \frac{\sigma^{2}}{n}
+    = \frac{1}{\mu^{4}} \cdot \frac{\sigma^{2}}{n}
+    = \mathcal{O}\left( \frac{1}{n} \right).
+\]
+
+This completes the proof.
+\end{proof}
+
+\subsection{Data Statistics}
+\label{sec:data_statistics}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.6\linewidth]{figures/0914_wiki_table_with_domain_distribution.png}
+\caption{The distribution of our training data.}
+\label{fig:domain_distribution}
+\vspace{-1em}
+\end{figure}
+
+Figure~\ref{fig:domain_distribution} illustrates the distribution of our training data.
+
+
+
+Figure \ref{fig:entity_distribution} displays the entity count distribution of our training data. A significant portion of our samples contain at least 100 entities, underscoring the inherent difficulty of our dataset. As formalized in Equation \ref{eq: V}, this complexity is crucial for robustly measuring efficiency, which in turn leads to improved overall performance.
+
+\subsection{Data Cleaning and Basic Task Construction}
+\label{sec:appendix_cleaning_basic}
+
+This section elaborates on the data processing and construction methodology for the \texttt{Basic} version tasks introduced in Section~\ref{sec:base_dataset_construction}.
+
+\paragraph{Rationale for Tree Structure}
+In information-seeking tasks, the reasoning structure is paramount. We chose a tree structure for our basic tasks because it offers a compact and hierarchical organization of entities. This structure is highly efficient for representing a large number of interconnected entities that stem from a common query concept, mirroring many real-world information-gathering scenarios. A reasoning tree is composed of a root (question entity) and a set of subtrees, where each subtree represents a cohesive unit of information.
+
+\paragraph{Multi-Stage Table Cleaning}
+To ensure the quality and suitability of the data used for task synthesis, we crawled approximately 2 million tables from Wikipedia and subjected them to a rigorous multi-stage cleaning procedure. This was essential because raw web tables are often noisy and inconsistent. The stages were as follows:
+
+\begin{itemize}[left=0.2cm]
+\item \textbf{Size Filtering:} We first discarded tables that were either too small (fewer than 10 rows or 3 columns) to capture meaningful relational information, or too large (more than 200 rows or 20 columns) to be processed efficiently and form a coherent task.
+\item \textbf{Semantic and Structural Filtering:} We then removed semantically irrelevant columns that frequently appear in web tables, such as those containing serial numbers, notes, or references. Tables with significant formatting errors (e.g., numerous merged cells that disrupt the relational structure) were also excluded.
+\item \textbf{Isomorphism and Homogeneity:} Finally, we retained only groups of isomorphic tables (tables sharing the same column headers and structure). This step was crucial for ensuring structural homogeneity across our dataset, which is a prerequisite for identifying common subtree structures needed for the \texttt{Union} operation described later.
+\end{itemize}
+
+The resulting collection contains clean, well-structured tables with a set of meaningful fields as columns and multiple rows, where each row can be transformed into a subtree.
+
+\paragraph{Reasoning Tree Population}
+To construct the three-layer reasoning tree from a single table, we populate the layers as follows:
+\begin{itemize}[left=0.4cm]
+\item \textbf{First Layer (Question Entities):} Entities mentioned in the table's title or caption are extracted to form the root of the tree.
+\item \textbf{Second Layer (Roots of Subtrees):} We employ an LLM to analyze the table's columns and select one that contains no duplicate entries. This column is treated as the key, and its values become the second-layer entities of the tree. Each of these entities serves as the root of a subtree. The LLM is effective at identifying columns like `Name' or `Title' that serve this unique identification purpose.
+\item \textbf{Third Layer (Leaves of Subtrees):} The values in the remaining columns of the table constitute the third layer, representing the leaf entities associated with each second-layer entity.
+\end{itemize}
+
+
+\subsection{Maximal Union Algorithm for Task Synthesis}
+\label{sec:appendix_maximal_fusion}
+
+This section provides the formal definition and algorithmic implementation for discovering maximal union groups, as introduced in Section~\ref{sec:union_synthesis}. The core of our approach is to reformulate the search for compatible reasoning trees as a Maximal Biclique Enumeration (refer to ~\ref{alg:appendix_fusion} problem on a bipartite graph.
+
+\textbf{Problem Formulation}
+
+Let $\mathcal{T}_{\text{base}} = \{T_1, T_2, \dots, T_N\}$ be our collection of basic reasoning trees. We first construct a bipartite graph $G=(U, V, E)$, where $U = \mathcal{T}_{\text{base}}$ is the set of all trees, and $V$ is the set of all unique relation names found within the subtrees across all trees in $\mathcal{T}_{\text{base}}$. An edge $(T_i, v_j) \in E$ exists if the relation $v_j$ is present in any subtree of tree $T_i$ (i.e., $v_j \in \text{Rel}(T_i)$, where $\text{Rel}(T_i) = \bigcup_k \text{Rel}(S_{i,k})$).
+
+In this construction, a \textit{maximal union} directly corresponds to a \textit{maximal biclique} $(\mathcal{U}, \mathcal{V})$, where $\mathcal{U} \subseteq U$ is a set of trees and $\mathcal{V} \subseteq V$ is a set of their common relations. Our goal is to find all such maximal bicliques that satisfy certain size and semantic constraints. Formally, we seek to find all maximal pairs $(\mathcal{U}, \mathcal{V})$ that satisfy:
+\begin{equation}
+\label{eq:optimization}
+\begin{aligned}
+\text{find maximal} \quad & (\mathcal{U}, \mathcal{V}) \\
+\text{subject to} \quad & \forall T_i \in \mathcal{U}, \mathcal{V} \subseteq \text{Rel}(T_i), \\
+& |\mathcal{U}| \ge k_{\min}, |\mathcal{V}| \ge m_{\min}.
+\end{aligned}
+\end{equation}
+
+Here, maximality means that no other tree can be added to $\mathcal{U}$ and no other relation can be added to $\mathcal{V}$ without violating the biclique property. Solving this by reformulating it as a standard maximal biclique enumeration problem is computationally efficient compared to an exhaustive search.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{figures/0914_wiki_table_with_longtable_entity_distribution.png}
+\caption{Entity Count Distribution in Training Data. A significant portion of our samples contains at least 100 entities, underscoring the inherent difficulty of our dataset. This complexity, as formalized in Equation~\eqref{eq: V}, is crucial for robustly measuring efficiency, which in turn contributes to improved overall performance.}
+\label{fig:entity_distribution}
+\vspace{-1em}
+\end{figure}
+\textbf{Algorithm and Implementation Details}
+
+\begin{itemize}[left=0.4cm]
+    \item \textbf{Input:} A collection of base reasoning trees $\mathcal{T}_{\text{base}}$; a minimum number of trees for a valid union, $k_{\min}$; a minimum number of common relations, $m_{\min}$.
+    \item \textbf{Goal:} To find all \textit{maximal union groups}, which are the solutions $(\mathcal{U}, \mathcal{V})$ to Eq.~(\ref{eq:optimization}) that also satisfy the semantic matching criteria below.
+    \item \textbf{Subtree Relation Matching Criteria:} To ensure the semantic coherence of unions, we impose strict matching criteria. For relations connecting the second and third layers, we require they share the same standardized name, data type, and domain. For the second-layer entities themselves (the roots of the subtrees), we relax this constraint, requiring only a match in data type and domain. This flexibility allows for the union of trees with conceptually similar but differently named second-layer entities (e.g., fusing a tree where entities are 'Authors' with another where they are 'Writers').
+    \item \textbf{Output:} A set of maximal union groups $\mathcal{F}$, where each element is a tuple $\langle U', V' \rangle$ that meets the specified criteria.
+\end{itemize}
+
+The process is detailed in Algorithm~\ref{alg:appendix_fusion}.
+
+\begin{algorithm}[ht!]
+\caption{Maximal Union Identification Algorithm}
+\label{alg:appendix_fusion}
+\KwIn{A collection of base reasoning trees $\mathcal{T}_{\text{base}}$, minimum trees $k_{\min}$, minimum common relations $m_{\min}$.}
+\KwOut{A set of maximal union groups $\mathcal{F}$.}
+
+$\mathcal{F} \leftarrow \emptyset$\;
+
+\tcp{1. Construct the bipartite graph from trees and subtree relations}
+Let $U$ be the set of trees from $\mathcal{T}_{\text{base}}$ and $V$ be the set of unique standardized relation names found within the subtrees of all trees in $\mathcal{T}_{\text{base}}$\;
+Construct the graph $G=(U, V, E)$ where an edge $(u, v) \in E$ exists if tree $u$ contains the relation $v$ in its subtrees (i.e., $v \in \text{Rel}(u)$)\;
+
+\tcp{2. Enumerate maximal bicliques from the graph}
+$\mathcal{B} \leftarrow \text{EnumerateMaximalBicliques}(G)$\;
+\tcp*{Leverages standard algorithms like MICA or Eclat}
+
+\tcp{3. Filter and validate bicliques to form final union groups}
+\For{each maximal biclique $(U', V')$ in $\mathcal{B}$}{
+    \tcp{Check size constraints from Eq. (1)}
+    \If{$|U'| < k_{\min}$ or $|V'| < m_{\min}$}{
+        \textbf{continue}\;
+    }
+
+    \tcp{Validate semantic compatibility of second-layer entities}
+    Let $T_{\text{id}}, D_{\text{id}}$ be the type and domain of the second-layer entities of the first tree in $U'$\;
+    is\_compatible $\leftarrow$ \textbf{true}\;
+    \For{each tree $u \in U'$}{
+        \If{$u$'s second-layer entity type $\neq T_{\text{id}}$ or domain $\neq D_{\text{id}}$}{
+            is\_compatible $\leftarrow$ \textbf{false}\;
+            \textbf{break}\;
+        }
+    }
+
+    \tcp{If all checks pass, add to the set of valid union groups}
+    \If{is\_compatible}{
+        $\mathcal{F} \leftarrow \mathcal{F} \cup \{\langle U', V' \rangle\}$\;
+    }
+}
+\KwRet{$\mathcal{F}$}\;
+\end{algorithm}
+
+\subsection{Detailed Examples of Task Synthesis}
+\label{sec:appendix_examples}
+
+This section provides detailed explanations and reasoning walkthroughs for the examples of the three task synthesis versions presented in Section~\ref{sec:method} and Figure~\ref{fig:overview}.
+
+\subsubsection{\textbf{Version-I: Basic}}
+\label{sec:example Version-I: Basic}
+
+The goal of the basic version is to create a task with a clear, hierarchical reasoning structure derived from a single, self-contained set of entities.
+
+\textbf{Example Question:} \textit{Who were the Nobel Prize winners in Literature between 1980 and 1990? Please include their name, country, award year, and gender.}
+
+\textbf{Construction Process:}
+The task is constructed from a single Wikipedia table, forming a reasoning tree. The layers shown in Figure~\ref{fig:overview}(a) are populated as follows:
+\begin{itemize}[left=0.4cm]
+\item \textbf{First Layer (question entities):} Derived from the table's title and a specified constraint, forming the query's scope: {\emph{Literature Nobel Prize, year 1980–1990}}.
+\item \textbf{Second Layer (subtree roots):} Populated from the table's key column (e.g., author names): {\emph{Czesław Miłosz, William Golding}, \ldots}.
+\item \textbf{Third Layer (subtree leaves):} Consists of values from the remaining columns, representing attributes for each second-layer entity. For example: {\emph{man, Poland, 1980}} for Czesław Miłosz. The edges connecting the second to the third layer represent relations like `has\_gender', `has\_country', `has\_award\_year'.
+\end{itemize}
+
+\textbf{Reasoning Path:}
+An agent is expected to follow this hierarchical structure:
+\begin{itemize}[left=0.4cm]
+\item \textbf{Identify Scope:} Recognize the ``Question Entities'' from the query: {\emph{Nobel Prize in Literature, 1980–1990}}.
+\item \textbf{Retrieve Second-Layer Entities:} Retrieve the second-layer entities, which are the authors: {Czesław Miłosz, William Golding, ...}.
+\item \textbf{Gather Attributes:} For each second-layer entity, follow the relations to retrieve their associated third-layer entities, such as {Poland, 1980, man} for Czesław Miłosz.
+\end{itemize}
+
+\subsubsection{\textbf{Version-II: Union}}
+\label{sec:example Version-II: Union}
+
+This version increases structural complexity by requiring the agent to perform relational operations across distinct reasoning trees.
+
+\textbf{Example Question:} \textit{Which authors have won both the Nobel Prize in Literature and the Booker Prize? For each, provide their name, nationality and the year they won the Nobel.}
+
+\textbf{Construction Process:}
+Once a maximal union is identified (e.g., between the reasoning trees for ``Nobel Prize laureates'' and ``Booker Prize winners,'' which share common relations like ``has\_nationality'' within their subtrees), an LLM generates a task requiring information integration. The LLM is prompted to find an interesting relationship, such as the intersection of the two sets of second-layer entities (authors), and then weave this logic into a natural language question.
+
+\textbf{Reasoning Path:}
+The task is constructed from a \textit{maximal union} of two distinct reasoning trees. To solve this, an agent must:
+\begin{itemize}[left=0.4cm]
+    \item \textbf{Retrieve First Entity Set:} Identify the first concept, ``Nobel Prize in Literature,'' and retrieve the full set of corresponding second-layer entities from the first tree, $R_{\text{Nobel (T1)}}$.
+    \item \textbf{Retrieve Second Entity Set:} Identify the second concept, ``Booker Prize,'' and retrieve its full set of second-layer entities from the second tree, $R_{\text{Booker (T2)}}$.
+    \item \textbf{Find Intersection:} Perform a relational join to find the intersection of the two sets of second-layer entities based on name. The final ``Target Entities'' are the entities present in both sets, such as \{\textit{William Golding}, \textit{J.M. Coetzee}, \dots\}, along with their requested third-layer attributes.
+\end{itemize}
+
+\subsubsection{\textbf{Version-III: Reverse-Union}}
+\label{sec:example Version-III: Reverse-Union}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{figures/toolcall.pdf}
+\caption{Distribution of \textit{Search}, \textit{Visit}, and total tool call.}
+\label{fig:toolcall}
+\vspace{-1em}
+\end{figure}
+
+This version introduces a challenging cognitive workflow by intentionally obfuscating the query's entry points.
+
+\textbf{Motivation and Design:}
+The \texttt{Union} method, while creating multi-source tasks, has a vulnerability: an agent could solve it with simple keyword searches for each source, bypassing deeper reasoning. \texttt{Reverse-Union} inverts the information flow, forcing an agent to first deduce a core `anchor' entity (a second-layer entity) from descriptive clues and then use that entity as a pivot to expand its search.
+
+\textbf{Example Question:} \textit{Who are the authors from the same country as the 1980s prize-winner that wrote a novel about a group of British boys stranded on an uninhabited island, and who have also won both this reward and the Booker Prize? For each of them, what is their name, country, and the respective years they won each award?}
+
+\textbf{Construction Process:}
+The construction builds upon the unified space from Version-II with a ``reverse'' logic:
+\begin{itemize}[left=0.4cm]
+    \item \textbf{Source:} We use the unified information space from the Nobel and Booker prize union.
+    \item \textbf{Select Anchor:} An entity at the intersection of the second layers is chosen as the ``anchor,'' e.g., \textit{William Golding}.
+    \item \textbf{Obfuscate Anchor:} Instead of naming the anchor, unique descriptive clues based on its third-layer attributes are generated: ``the 1980s prize-winner'' and ``wrote a novel about... British boys...'' These clues become the `Question Entities'.
+    \item \textbf{Create Union Trigger:} A third-layer attribute of the anchor, his nationality (\textit{British}), is selected as the pivot for the next stage of the query.
+\end{itemize}
+
+\textbf{Required Reasoning Process:}
+To solve this task, an agent must execute a two-stage process:
+\begin{itemize}[left=0.4cm]
+    \item \textbf{Deduction Stage:} The agent must first resolve the descriptive clues (which are third-layer entities) to identify the second-layer anchor entity. The clues ``1980s prize-winner'' and ``novel about stranded British boys'' uniquely point to \textit{William Golding}. This inferential step is crucial.
+    \item \textbf{Union Stage:} Having deduced William Golding, the agent identifies his nationality (a third-layer entity in his subtree): \textit{British}. This becomes the pivot for the main query. The agent must then find all second-layer entities who (1) share this third-layer attribute (\textit{British}) and (2) have won both the Nobel Prize and the Booker Prize. This requires filtering the unified entity space to find the final set of ``Target Entities'', which includes authors like \textit{William Golding}, \textit{Kazuo Ishiguro}, and \textit{J.M. Coetzee}.
+\end{itemize}
+
+
+
+
+\section{Tool Call Analysis}
+
+As shown in Figure~\ref{fig:toolcall}, our method involves a significantly large number of actions, including \textit{Search}, \textit{Visit}, and total tool calls. The density distributions indicate that tool calls often exceed several dozen per instance, with many cases surpassing 50 actions. This high frequency of actions reflects the intensive interaction and comprehensive exploration carried out by our approach, ensuring that the method thoroughly leverages available tools to achieve optimal performance.

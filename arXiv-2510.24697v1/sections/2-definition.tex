@@ -1,0 +1,104 @@
+% \vspace{-5mm}
+\section{Definitions}
+\label{sec:definitions}
+% \vspace{-2mm}
+
+An Information-Seeking (IS) task challenges an agent to answer a complex natural language question by navigating a vast information space to assemble a complete set of required entities. This process is inherently sequential, involving the progressive discovery of entities, understanding their properties (attributes), and leveraging relationships between them to uncover further entities. This section formally defines the components of such a task and the metrics for evaluating an agent's performance, emphasizing the importance of identifying both final and intermediate entities in the reasoning chain.
+
+% \vspace{-3mm}
+\subsection{Information-Seeking Task}
+\label{subsec:IS_task}
+% \vspace{-2mm}
+
+An entity $e\in\mathcal{E}$ is the fundamental unit of information. 
+An \emph{Information-Seeking (IS) task} is the process of identifying and collecting a specific set of target entities from $\mathcal{E}$, based on a question. Formally, an IS task is a tuple:
+\(\mathcal{T} = \langle q, R \rangle \)
+, where $q$ is the natural language question and $R \subset \mathcal{E}$ is the set of the target entities that collectively satisfy the conditions posed by $q$.
+
+Critically, the required set $R$ includes not only the final, explicit answers but also all \emph{intermediate entities} that are necessary stepping stones in the reasoning process. Consider the question:
+\begin{equation}
+\label{eq:example_IS}
+\begin{aligned}
+q: & \ \textit{Which player of a team in the 2004--05 season, who was born in the 1990s?} \\
+   & \ \textit{This team was founded in 1966 and is an East German football team.}
+\end{aligned}
+\end{equation}
+To solve this, an IS agent must seek for information online, and find the target entity set as answer:
+\begin{equation}
+\label{eq:set_R}
+\begin{aligned}
+R = \{ \textit{Robert Rudwaleit}, \textit{Danny Kukulies}, \ldots \}.
+\end{aligned}
+\end{equation}
+
+% first identify the team that satisfies the given attributes (\text{founded in 1966}, \textit{is an East German football team}). This leads to the discovery of the intermediate entity $\{\textit{Berliner FC Dynamo}\}$. Only then can the agent find the players associated with this team who meet the remaining criteria. Therefore, the complete required set $R$ for this task encompasses all entities that must be found:
+
+% This formulation ensures that the task definition itself values the entire reasoning pathway, not just the final result.
+
+% \vspace{-2mm}
+\subsection{Information-Seeking Agent}
+\label{subsec:IS_agent}
+% \vspace{-2mm}
+
+We focus on an \emph{Information-Seeking Agent} that interacts with a web environment to solve an IS task $\mathcal{T}$ within the ReAct framework~\citep{yao2023react}. The agent's operation is a sequential decision-making process occurring over discrete time steps $t=1, \dots, T$. At each step, the agent analyzes its current state (including the initial question and all previously gathered information), generates a thought for planning its next move, executes a tool-based action to seek new information, and receives an observation from the environment. This entire process is captured in the \emph{agent trajectory} is defined as
+\begin{equation}
+\label{eq: trajectory}
+\mathcal{H}_T = (q, \tau_1, \alpha_1, o_1, \tau_2, \alpha_2, o_2, \ldots, \tau_{T}, \alpha_{T}, o_{T}),
+\end{equation}
+where $\tau_i$ is the planning thought, $\alpha_i$ is the seeking action, and $o_i$ is the resulting observation at step $i$. 
+% Through these interactions, the agent uncovers entities and their attributes.
+At the end of the process, the agent has obtained a set of entities $O \subset \mathcal{E}$, which is the union of all unique entities discovered across all steps.
+
+% \begin{equation}
+% O = \bigcup_{t=1}^{T} O_t,
+% \end{equation}
+% where $O_t$ is the set of entities discovered from observation $o_t$.
+
+% \vspace{-2mm}
+\subsection{Quantifying Information Collection and Efficiency}
+\label{subsec:quantifying_collection}
+% \vspace{-2mm}
+
+To guide an agent towards successfully solving IS tasks, its performance framework must value the entire reasoning process, not merely the final output. 
+% A myopic focus on just the end answers fails to reward the critical discovery of intermediate entities, which are the stepping stones of multi-step reasoning. 
+Our central thesis is that by explicitly quantifying the value of \emph{all} required information discovered, we can create a stronger signal for learning effective search strategies. To this end, we define principles to formalize the performance (the total information gain) and the efficiency (the gain per action) of the agent's collection process.
+
+
+
+\vspace{-2mm}
+\paragraph{Information-Seeking Rate (ISR)}
+Recall that $R$ denotes the set of target ground-truth entities for the task, with cardinality $n = |R|$. $O$ is the set of entities actually obtained by the agent during its operation.  
+The intersection $R \cap O$ therefore contains all required entities that were successfully retrieved.
+The \emph{information collection rate} directly measures the fraction of required entities successfully obtained by the agent:
+\begin{equation}
+\label{eq:ISR}
+\mathrm{ISR} = \frac{|R \cap O|}{|R|} = \frac{|R \cap O|}{n}.
+\end{equation}
+$\mathrm{ISR} \in [0,1]$, and higher values indicate more thorough coverage of the required information.  
+% Since $R$ may include both intermediate and final entities in a reasoning chain, a high $\mathrm{ISR}$ reflects better overall retrieval performance.
+\vspace{-2mm}
+\paragraph{Information-Seeking Efficiency (ISE)}
+While $\mathrm{ISR}$ measures completeness, the \emph{information collection efficiency} reflects the average number of action steps to discover the target entity:
+% The ISE is defined as:
+\begin{equation}
+\label{eq:ISE}
+\mathrm{ISE} = \frac{n}{T},
+\end{equation}
+
+where $T$ is the total number of steps of the solving trajectory. Higher $\mathrm{ISE}$ implies greater IS efficiency. The stability of measuring $\mathrm{ISE}$ is important for providing unbiased training signals.
+
+\begin{proposition}[Variance of ISE]
+\label{prop:var_reduction}
+Let $X_i$ denote the number of steps the agent takes to discover the $i$-th new entity in $R$. Therefore $\mathrm{ISE} = \frac{n}{T}=\frac{n}{\sum_{i=1}^n X_i}$.
+Assume $X_1,\dots,X_n$ be i.i.d.\ random variables with finite mean $\mu>0$ and finite variance $\sigma^2$, $X_i>0$ almost surely, then:
+
+% \vspace{-3mm}
+\begin{align}
+\label{eq: V}
+\mathrm{Var}(\mathrm{ISE}) = \mathcal{O}\left(\frac{1}{n}\right).
+\end{align}
+\vspace{-3mm}
+
+\end{proposition}
+
+This proposition shows that as the number of target entities $n$ grows, measuring $\mathrm{ISE}$ becomes a more stable and reliable performance metric. The detailed proof is provided in Appendix~\ref{sec:appendix_proof_ise}.

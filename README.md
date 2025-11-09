@@ -46,8 +46,8 @@
 ### 1. 克隆仓库
 
 ```bash
-git clone <repository-url>
-cd ppt
+git clone https://github.com/demon2036/ppt-agent.git
+cd ppt-agent
 ```
 
 ### 2. 从模板创建新演示

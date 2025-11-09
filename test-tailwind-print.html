@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tailwind 打印测试</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-dark': '#303A52',
+            'primary-blue': '#4A90E2',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="p-8">
+  <h1 class="text-4xl font-bold text-primary-dark mb-4 print:text-2xl">测试标题</h1>
+
+  <!-- 观察盒子 - 用 Tailwind 实现 -->
+  <div class="p-4 my-4 rounded-lg border-l-4 border-red-500 bg-gradient-to-r from-red-50 to-red-100 font-bold print:break-inside-avoid print:p-2">
+    <strong>核心观点：</strong>这是一个观察盒子（Tailwind版本）
+  </div>
+
+  <!-- 两栏布局 -->
+  <div class="grid grid-cols-2 gap-8 print:gap-4">
+    <div>
+      <h3 class="text-xl font-bold mb-2">左栏</h3>
+      <ul class="list-disc pl-6">
+        <li>要点1</li>
+        <li>要点2</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-xl font-bold mb-2">右栏</h3>
+      <div class="bg-gray-100 p-4 rounded text-center print:break-inside-avoid">
+        公式盒子
+      </div>
+    </div>
+  </div>
+
+  <!-- 打印说明 -->
+  <div class="mt-8 p-4 bg-blue-50 border-l-4 border-blue-500">
+    <p class="font-bold">打印测试说明：</p>
+    <p>1. 按 Ctrl+P (或 Cmd+P) 打开打印预览</p>
+    <p>2. 观察打印效果</p>
+    <p>3. 所有 print: 前缀的类都会生效</p>
+  </div>
+</body>
+</html>

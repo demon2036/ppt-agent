@@ -1,0 +1,79 @@
+<section class="p-6 print:p-4 print:break-inside-avoid">
+  <h2 class="text-5xl font-bold text-primary-blue mb-6">方法对比：传统 vs WebLeaper</h2>
+
+  <!-- Comparison Grid -->
+  <div class="grid grid-cols-2 gap-6 mt-6 print:gap-4">
+    <!-- Left: Traditional (Red) -->
+    <div class="bg-red-50 p-5 rounded-lg border-2 border-warning-red print:break-inside-avoid print:p-3">
+      <h3 class="text-3xl font-bold text-warning-red mb-4 flex items-center">
+        <span class="mr-3 text-4xl">✗</span> 传统方法
+      </h3>
+
+      <div class="space-y-3 text-base">
+        <div>
+          <p class="font-bold text-gray-800 mb-1">数据合成</p>
+          <p class="text-gray-700">实体稀疏（1-3个/任务）</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-gray-800 mb-1">训练目标</p>
+          <p class="text-gray-700">仅关注准确性，忽略效率</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-gray-800 mb-1">评估指标</p>
+          <p class="text-gray-700">方差大，不稳定（Var ∝ 1/n）</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-gray-800 mb-1">实际表现</p>
+          <p class="text-gray-700 leading-relaxed">
+            • 平均 15-20 步完成任务<br>
+            • 大量重复访问<br>
+            • 召回率低 (&lt; 60%)
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: WebLeaper (Green) -->
+    <div class="bg-green-50 p-5 rounded-lg border-2 border-success-green print:break-inside-avoid print:p-3">
+      <h3 class="text-3xl font-bold text-success-green mb-4 flex items-center">
+        <span class="mr-3 text-4xl">✓</span> WebLeaper
+      </h3>
+
+      <div class="space-y-3 text-base">
+        <div>
+          <p class="font-bold text-gray-800 mb-1">数据合成</p>
+          <p class="text-gray-700">实体密集（10-50个/任务）</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-gray-800 mb-1">训练目标</p>
+          <p class="text-gray-700">准确性 + 效率双重优化</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-gray-800 mb-1">评估指标</p>
+          <p class="text-gray-700">稳定可靠（ISR + ISE）</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-gray-800 mb-1">实际表现</p>
+          <p class="text-gray-700 leading-relaxed">
+            • 平均 5-7 步完成任务 <span class="bg-yellow-200 px-1 rounded font-semibold">(3-5x faster)</span><br>
+            • 精准直达目标页面<br>
+            • 召回率高 (&gt; 85%)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Summary -->
+  <div class="mt-6 p-4 bg-gradient-to-r from-primary-blue to-primary-dark text-white rounded-lg print:break-inside-avoid print:p-3 print:mt-4">
+    <p class="text-lg font-bold">
+      📊 关键提升：准确率 +15%，效率 +300-500%，总体性能提升 <span class="text-primary-accent text-2xl">4x</span>
+    </p>
+  </div>
+</section>

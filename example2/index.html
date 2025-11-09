@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind CSS Presentation Demo</title>
+
+  <!-- Reveal.js Core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/white.css">
+
+  <!-- Tailwind CSS (Play CDN for quick setup) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-dark': '#303A52',
+            'primary-blue': '#4A90E2',
+            'primary-accent': '#F9AA33',
+            'warning-red': '#E74C3C',
+            'success-green': '#2ECC71',
+          },
+          spacing: {
+            '0.5': '0.125rem',
+            '1.5': '0.375rem',
+            '2.5': '0.625rem',
+            '3.5': '0.875rem',
+          },
+          fontSize: {
+            '2xs': '0.625rem',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- MathJax -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Custom Print Styles -->
+  <style>
+    @page {
+      size: 21.6in 12.15in;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .reveal .slides section {
+        page-break-inside: avoid !important;
+        height: auto !important;
+        max-height: none !important;
+      }
+    }
+
+    /* Reveal.js text alignment override */
+    .reveal section {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides" id="slides-root"></div>
+  </div>
+
+  <!-- Reveal.js Plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/math/math.js"></script>
+
+  <!-- Slide Loader -->
+  <script>
+    async function loadSlides() {
+      try {
+        const response = await fetch('slides/manifest.json');
+        const manifest = await response.json();
+
+        const slidesRoot = document.getElementById('slides-root');
+
+        for (const item of manifest) {
+          const slideResponse = await fetch(`slides/${item.file}`);
+          const slideHtml = await slideResponse.text();
+          slidesRoot.innerHTML += slideHtml;
+        }
+
+        // Initialize Reveal.js
+        Reveal.initialize({
+          hash: true,
+          slideNumber: 'c/t',
+          width: 1920,
+          height: 1080,
+          margin: 0.08,
+          pdfMaxPagesPerSlide: 1,
+          pdfSeparateFragments: false,
+          minScale: 0.2,
+          maxScale: 2.0,
+          transition: 'slide',
+          plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+        });
+      } catch (error) {
+        console.error('Failed to load slides:', error);
+      }
+    }
+
+    loadSlides();
+  </script>
+</body>
+</html>

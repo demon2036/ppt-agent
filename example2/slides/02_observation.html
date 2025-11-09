@@ -1,0 +1,24 @@
+<section class="p-6 print:p-4 print:break-inside-avoid">
+  <h2 class="text-5xl font-bold text-primary-blue mb-6">核心问题分析</h2>
+
+  <!-- Observation Box -->
+  <div class="p-4 my-4 rounded-lg border-l-[0.3em] border-warning-red bg-gradient-to-r from-red-50 to-red-100 font-bold text-lg print:break-inside-avoid print:p-2 print:my-2">
+    <strong>观察：</strong>传统代理在信息寻求任务中效率低下，存在大量<span class="bg-yellow-200 px-2 py-1 rounded font-bold">"兜圈子"</span>行为
+  </div>
+
+  <!-- Content List -->
+  <div class="mt-8">
+    <h3 class="text-3xl font-bold text-primary-dark mb-4">问题表现</h3>
+    <ul class="space-y-3 text-lg">
+      <li class="leading-relaxed"><strong>重复访问：</strong>多次访问同一页面，未获取新信息</li>
+      <li class="leading-relaxed"><strong>盲目探索：</strong>缺乏目标导向，随机点击链接</li>
+      <li class="leading-relaxed"><strong>低召回率：</strong>即使找到相关页面，也遗漏大量目标实体</li>
+      <li class="leading-relaxed"><strong>效率浪费：</strong>平均需要 15-20 步才能完成简单任务</li>
+    </ul>
+  </div>
+
+  <!-- Insight Box -->
+  <div class="mt-6 p-4 rounded-lg border-l-[0.3em] border-primary-blue bg-gradient-to-r from-blue-50 to-blue-100 print:break-inside-avoid print:p-2 print:mt-4">
+    <strong class="text-primary-blue">💡 核心洞察：</strong>问题根源在于训练数据的<span class="font-bold text-primary-dark">实体稀疏性</span>，导致模型无法学会高效的信息提取策略。
+  </div>
+</section>

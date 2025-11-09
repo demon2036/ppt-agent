@@ -1,0 +1,44 @@
+<section class="p-6 print:p-4 print:break-inside-avoid">
+  <h2 class="text-5xl font-bold text-primary-blue mb-6">实体稀疏性详解</h2>
+
+  <!-- Two Columns Layout -->
+  <div class="grid grid-cols-2 gap-8 items-start print:gap-4">
+    <!-- Left Column -->
+    <div>
+      <h3 class="text-3xl font-bold text-primary-dark mb-4">什么是实体稀疏性？</h3>
+      <ul class="space-y-3 text-base leading-relaxed">
+        <li><strong>定义：</strong>传统数据合成中，一个问题只提供<strong class="text-warning-red">1-3个目标实体</strong></li>
+        <li><strong>示例：</strong>问"谁获得了2020年诺贝尔文学奖？" 答案只有1个实体</li>
+        <li><strong>后果：</strong>模型在有限上下文中缺乏学习机会</li>
+      </ul>
+
+      <h3 class="text-3xl font-bold text-primary-dark mb-4 mt-6">两大恶果</h3>
+      <div class="space-y-3 text-base">
+        <p><strong>实践层面：</strong>一次任务只能学到1-2个"知识点"，无法学会高效"捞针"</p>
+        <p><strong>理论层面：</strong>评估指标方差过大，测量不稳定（见右侧）</p>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div>
+      <h3 class="text-3xl font-bold text-primary-dark mb-4">理论证明（命题1）</h3>
+
+      <!-- Formula Box -->
+      <div class="bg-gray-100 p-5 my-4 rounded-lg text-center print:break-inside-avoid">
+        <div class="text-2xl">
+          \[\text{ISE} = \frac{n}{T}\]
+        </div>
+        <div class="text-2xl mt-3">
+          \[\text{Var}(\text{ISE}) = \mathcal{O}\left(\frac{1}{n}\right)\]
+        </div>
+      </div>
+
+      <!-- Insight Box -->
+      <div class="p-4 mt-4 rounded-lg border-l-[0.3em] border-primary-blue bg-gradient-to-r from-blue-50 to-blue-100 text-sm leading-relaxed print:break-inside-avoid print:p-2">
+        <p class="mb-2"><strong class="text-primary-blue">命题 1 解读：</strong>ISE（信息寻求效率）的方差与实体数量 n 成反比。</p>
+        <p class="mb-2"><strong>含义：</strong>实体稀疏时，效率测量极不稳定。就像<span class="bg-yellow-200 px-1 rounded font-semibold">用晃动的尺子量长度</span>。</p>
+        <p><strong>结论：</strong>必须<span class="bg-yellow-200 px-1 rounded font-semibold">构建实体密集 (n 大) 的任务</span>。</p>
+      </div>
+    </div>
+  </div>
+</section>

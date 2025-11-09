@@ -1,0 +1,170 @@
+/**
+ * OverflowPreventer CSS - 物理约束样式
+ *
+ * 这些样式用于从 CSS 层面强制阻断 overflow
+ */
+
+/* 容器基础约束 */
+[data-overflow-prevented="true"] {
+  overflow: hidden !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  contain: layout style paint;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* 所有子元素的基础约束 */
+[data-overflow-prevented="true"] * {
+  box-sizing: border-box;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* 防止图片溢出 */
+[data-overflow-prevented="true"] img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  height: auto;
+  object-fit: contain;
+}
+
+/* 防止 SVG 溢出 */
+[data-overflow-prevented="true"] svg {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+/* 防止 video/iframe 溢出 */
+[data-overflow-prevented="true"] video,
+[data-overflow-prevented="true"] iframe {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+/* 防止表格溢出 */
+[data-overflow-prevented="true"] table {
+  max-width: 100% !important;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+/* 防止代码块溢出 */
+[data-overflow-prevented="true"] pre,
+[data-overflow-prevented="true"] code {
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* 防止绝对定位元素溢出 */
+[data-overflow-prevented="true"] *[style*="position: absolute"],
+[data-overflow-prevented="true"] *[style*="position: fixed"] {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  contain: layout style paint;
+}
+
+/* 防止 flex 容器溢出 */
+[data-overflow-prevented="true"] *[style*="display: flex"],
+[data-overflow-prevented="true"] .flex {
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+/* 防止 grid 容器溢出 */
+[data-overflow-prevented="true"] *[style*="display: grid"],
+[data-overflow-prevented="true"] .grid {
+  overflow: hidden;
+}
+
+/* 已约束的元素标记 */
+[data-overflow-constrained="true"] {
+  /* 可视化标记（调试用） */
+  /* outline: 1px dashed rgba(0, 255, 0, 0.3); */
+}
+
+/* 严格模式：额外约束 */
+.overflow-preventer-strict [data-overflow-prevented="true"] {
+  contain: strict;
+}
+
+.overflow-preventer-strict [data-overflow-prevented="true"] * {
+  contain: layout style;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+/* 文本溢出处理 */
+[data-overflow-prevented="true"] .text-overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-overflow-prevented="true"] .text-overflow-clip {
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+/* 防止浮动元素溢出 */
+[data-overflow-prevented="true"]::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Reveal.js 特定样式 */
+.reveal .slides section[data-overflow-prevented="true"] {
+  overflow: hidden !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+.reveal .slides section[data-overflow-prevented="true"] > * {
+  max-width: 100% !important;
+}
+
+/* 调试模式：可视化边界 */
+.overflow-preventer-debug [data-overflow-prevented="true"] {
+  outline: 2px solid red !important;
+}
+
+.overflow-preventer-debug [data-overflow-constrained="true"] {
+  outline: 1px dashed blue !important;
+}
+
+.overflow-preventer-debug [data-overflow-violation="true"] {
+  background: rgba(255, 0, 0, 0.1) !important;
+  outline: 3px solid red !important;
+}
+
+/* 响应式断点 */
+@media (max-width: 1920px) {
+  [data-overflow-prevented="true"] {
+    font-size: clamp(12px, 1vw, 16px);
+  }
+}
+
+@media (max-width: 1280px) {
+  [data-overflow-prevented="true"] {
+    font-size: clamp(10px, 0.9vw, 14px);
+  }
+}
+
+@media (max-width: 768px) {
+  [data-overflow-prevented="true"] {
+    font-size: clamp(8px, 0.8vw, 12px);
+  }
+}
+
+/* 打印样式 */
+@media print {
+  [data-overflow-prevented="true"] {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+}

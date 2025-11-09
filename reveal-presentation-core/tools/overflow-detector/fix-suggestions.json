@@ -1,0 +1,167 @@
+{
+  "timestamp": "2025-11-08T14:30:26.177Z",
+  "fixes": [
+    {
+      "file": "017.html",
+      "overflow": 1375,
+      "action": "add-dense-slide",
+      "severity": "severe"
+    },
+    {
+      "file": "023.html",
+      "overflow": 1182,
+      "action": "add-dense-slide",
+      "severity": "severe"
+    },
+    {
+      "file": "009.html",
+      "overflow": 1102,
+      "action": "add-dense-slide",
+      "severity": "severe"
+    },
+    {
+      "file": "011.html",
+      "overflow": 1081,
+      "action": "add-dense-slide",
+      "severity": "severe"
+    },
+    {
+      "file": "013.html",
+      "overflow": 1052,
+      "action": "add-dense-slide",
+      "severity": "severe"
+    },
+    {
+      "file": "030.html",
+      "overflow": 953,
+      "action": "add-dense-slide",
+      "severity": "severe"
+    },
+    {
+      "file": "008.html",
+      "overflow": 826,
+      "action": "add-dense-slide",
+      "severity": "severe"
+    },
+    {
+      "file": "029.html",
+      "overflow": 710,
+      "action": "add-dense-slide",
+      "severity": "severe"
+    },
+    {
+      "file": "014.html",
+      "overflow": 690,
+      "action": "add-dense-slide",
+      "severity": "severe"
+    },
+    {
+      "file": "018.html",
+      "overflow": 668,
+      "action": "add-dense-slide",
+      "severity": "severe"
+    },
+    {
+      "file": "005.html",
+      "overflow": 558,
+      "action": "add-dense-slide",
+      "severity": "severe"
+    },
+    {
+      "file": "002.html",
+      "overflow": 508,
+      "action": "add-dense-slide",
+      "severity": "severe"
+    },
+    {
+      "file": "003.html",
+      "overflow": 465,
+      "action": "add-dense-slide",
+      "severity": "moderate"
+    },
+    {
+      "file": "019.html",
+      "overflow": 431,
+      "action": "add-dense-slide",
+      "severity": "moderate"
+    },
+    {
+      "file": "012.html",
+      "overflow": 409,
+      "action": "add-dense-slide",
+      "severity": "moderate"
+    },
+    {
+      "file": "015.html",
+      "overflow": 353,
+      "action": "add-dense-slide",
+      "severity": "moderate"
+    },
+    {
+      "file": "021.html",
+      "overflow": 341,
+      "action": "add-dense-slide",
+      "severity": "moderate"
+    },
+    {
+      "file": "025.html",
+      "overflow": 269,
+      "action": "add-dense-slide",
+      "severity": "moderate"
+    },
+    {
+      "file": "027.html",
+      "overflow": 268,
+      "action": "add-dense-slide",
+      "severity": "moderate"
+    },
+    {
+      "file": "022.html",
+      "overflow": 254,
+      "action": "add-dense-slide",
+      "severity": "moderate"
+    },
+    {
+      "file": "026.html",
+      "overflow": 253,
+      "action": "add-dense-slide",
+      "severity": "moderate"
+    },
+    {
+      "file": "010.html",
+      "overflow": 243,
+      "action": "add-dense-slide",
+      "severity": "moderate"
+    },
+    {
+      "file": "004.html",
+      "overflow": 159,
+      "action": "check-manually",
+      "severity": "minor"
+    }
+  ],
+  "denseSlideFiles": [
+    "017.html",
+    "023.html",
+    "009.html",
+    "011.html",
+    "013.html",
+    "030.html",
+    "008.html",
+    "029.html",
+    "014.html",
+    "018.html",
+    "005.html",
+    "002.html",
+    "003.html",
+    "019.html",
+    "012.html",
+    "015.html",
+    "021.html",
+    "025.html",
+    "027.html",
+    "022.html",
+    "026.html",
+    "010.html"
+  ]
+}

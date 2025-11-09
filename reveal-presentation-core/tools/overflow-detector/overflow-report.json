@@ -1,0 +1,2268 @@
+{
+  "timestamp": "2025-11-08T17:05:05.203Z",
+  "config": {
+    "url": "http://localhost:8000/WebLeaper_Presentation/index_modular.html",
+    "width": 1920,
+    "height": 1080,
+    "waitTime": 1000,
+    "outputFile": "overflow-report.json"
+  },
+  "summary": {
+    "total": 45,
+    "ok": 45,
+    "overflow": 0
+  },
+  "results": [
+    {
+      "title": "WebLeaper",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 1,
+      "indices": {
+        "h": 0,
+        "v": 0
+      }
+    },
+    {
+      "title": "研究背景：LLM 代理与信息寻求的崛起",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 2,
+      "indices": {
+        "h": 1,
+        "v": 0
+      }
+    },
+    {
+      "title": "核心发现：强大能力背后的效率瓶颈",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 3,
+      "indices": {
+        "h": 2,
+        "v": 0
+      }
+    },
+    {
+      "title": "核心发现（续）：低效的三大表现",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 4,
+      "indices": {
+        "h": 3,
+        "v": 0
+      }
+    },
+    {
+      "title": "探究根源：为何代理会\"兜圈子\"？",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 5,
+      "indices": {
+        "h": 4,
+        "v": 0
+      }
+    },
+    {
+      "title": "本文方案：WebLeaper - 为高效寻求而生",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 6,
+      "indices": {
+        "h": 5,
+        "v": 0
+      }
+    },
+    {
+      "title": "第二部分",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 7,
+      "indices": {
+        "h": 6,
+        "v": 0
+      }
+    },
+    {
+      "title": "WebLeaper 方法论详解 - 路线图",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 8,
+      "indices": {
+        "h": 7,
+        "v": 0
+      }
+    },
+    {
+      "title": "任务合成的基石：树状结构 + 维基百科表格",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 9,
+      "indices": {
+        "h": 8,
+        "v": 0
+      }
+    },
+    {
+      "title": "任务合成：维基百科表格与数据清洗",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 10,
+      "indices": {
+        "h": 9,
+        "v": 0
+      }
+    },
+    {
+      "title": "数据清洗结果",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 11,
+      "indices": {
+        "h": 10,
+        "v": 0
+      }
+    },
+    {
+      "title": "Version-I: Basic - 单源高密度",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 12,
+      "indices": {
+        "h": 11,
+        "v": 0
+      }
+    },
+    {
+      "title": "Basic（续）：贡献与统计",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 13,
+      "indices": {
+        "h": 12,
+        "v": 0
+      }
+    },
+    {
+      "title": "Basic（续）：任务示例",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 14,
+      "indices": {
+        "h": 13,
+        "v": 0
+      }
+    },
+    {
+      "title": "Version-II: Union - 跨越多源信息整合",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 15,
+      "indices": {
+        "h": 14,
+        "v": 0
+      }
+    },
+    {
+      "title": "Version-III: Reverse-Union - 逆向推理对抗捷径",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1132,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 2,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 16,
+      "indices": {
+        "h": 15,
+        "v": 0
+      }
+    },
+    {
+      "title": "Reverse-Union（续）：扩展搜索与贡献",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 17,
+      "indices": {
+        "h": 16,
+        "v": 0
+      }
+    },
+    {
+      "title": "轨迹构建：如何定义\"好\"的解法？（1/2）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 18,
+      "indices": {
+        "h": 17,
+        "v": 0
+      }
+    },
+    {
+      "title": "轨迹构建：如何定义\"好\"的解法？（2/2）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 19,
+      "indices": {
+        "h": 18,
+        "v": 0
+      }
+    },
+    {
+      "title": "轨迹构建（续）：核心意义",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 20,
+      "indices": {
+        "h": 19,
+        "v": 0
+      }
+    },
+    {
+      "title": "轨迹构建（续）：过滤流程",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 21,
+      "indices": {
+        "h": 20,
+        "v": 0
+      }
+    },
+    {
+      "title": "强化学习：混合奖励系统（1/2）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 22,
+      "indices": {
+        "h": 21,
+        "v": 0
+      }
+    },
+    {
+      "title": "强化学习：混合奖励系统（2/2）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 23,
+      "indices": {
+        "h": 22,
+        "v": 0
+      }
+    },
+    {
+      "title": "第三部分",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 24,
+      "indices": {
+        "h": 23,
+        "v": 0
+      }
+    },
+    {
+      "title": "实验设置：在严苛环境中验证实力",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 25,
+      "indices": {
+        "h": 24,
+        "v": 0
+      }
+    },
+    {
+      "title": "基线模型（Baselines）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 26,
+      "indices": {
+        "h": 25,
+        "v": 0
+      }
+    },
+    {
+      "title": "实验设置（续）：训练配置",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 27,
+      "indices": {
+        "h": 26,
+        "v": 0
+      }
+    },
+    {
+      "title": "核心结果 (1)：全面超越，刷新开源模型记录",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 28,
+      "indices": {
+        "h": 27,
+        "v": 0
+      }
+    },
+    {
+      "title": "核心结果（续）：参数效率与全面提升",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 29,
+      "indices": {
+        "h": 28,
+        "v": 0
+      }
+    },
+    {
+      "title": "核心结果 (2)：不仅做得更好，而且用时更少（1/2）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 30,
+      "indices": {
+        "h": 29,
+        "v": 0
+      }
+    },
+    {
+      "title": "核心结果 (2)：不仅做得更好，而且用时更少（2/2）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 31,
+      "indices": {
+        "h": 30,
+        "v": 0
+      }
+    },
+    {
+      "title": "深入分析 (1)：为何 Reverse-Union 效果最好？（1/2）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 32,
+      "indices": {
+        "h": 31,
+        "v": 0
+      }
+    },
+    {
+      "title": "深入分析 (1)：为何 Reverse-Union 效果最好？（2/2）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 33,
+      "indices": {
+        "h": 32,
+        "v": 0
+      }
+    },
+    {
+      "title": "深入分析 (2)：如何筛选出\"黄金轨迹\"？",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 34,
+      "indices": {
+        "h": 33,
+        "v": 0
+      }
+    },
+    {
+      "title": "黄金轨迹筛选（续）：宽度搜索与关键洞察",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 35,
+      "indices": {
+        "h": 34,
+        "v": 0
+      }
+    },
+    {
+      "title": "黄金轨迹筛选（续）：对比策略",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 36,
+      "indices": {
+        "h": 35,
+        "v": 0
+      }
+    },
+    {
+      "title": "深入分析 (3)：强化学习带来的\"最后一跃\"（1/2）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 37,
+      "indices": {
+        "h": 36,
+        "v": 0
+      }
+    },
+    {
+      "title": "深入分析 (3)：强化学习带来的\"最后一跃\"（2/2）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 38,
+      "indices": {
+        "h": 37,
+        "v": 0
+      }
+    },
+    {
+      "title": "案例分析：WebLeaper vs. 普通代理（1/2）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 39,
+      "indices": {
+        "h": 38,
+        "v": 0
+      }
+    },
+    {
+      "title": "案例分析（续）：WebLeaper 的思考路径",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 40,
+      "indices": {
+        "h": 39,
+        "v": 0
+      }
+    },
+    {
+      "title": "案例分析：WebLeaper vs. 普通代理（2/2）",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 41,
+      "indices": {
+        "h": 40,
+        "v": 0
+      }
+    },
+    {
+      "title": "第四部分",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 42,
+      "indices": {
+        "h": 41,
+        "v": 0
+      }
+    },
+    {
+      "title": "相关工作：站在巨人的肩膀上",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 43,
+      "indices": {
+        "h": 42,
+        "v": 0
+      }
+    },
+    {
+      "title": "核心贡献总结",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 44,
+      "indices": {
+        "h": 43,
+        "v": 0
+      }
+    },
+    {
+      "title": "核心贡献（续）与成果",
+      "rect": {
+        "width": 1849.199951171875,
+        "height": 1039.5999755859375
+      },
+      "scroll": {
+        "height": 1130,
+        "width": 2010
+      },
+      "client": {
+        "height": 1130,
+        "width": 2010
+      },
+      "overflow": {
+        "vertical": false,
+        "horizontal": false,
+        "y": "visible",
+        "x": "visible",
+        "methods": {
+          "scroll": {
+            "v": false,
+            "h": false
+          },
+          "bbox": {
+            "v": false,
+            "h": false
+          }
+        }
+      },
+      "hasOverflow": false,
+      "overflowAmount": {
+        "vertical": 0,
+        "horizontal": 0
+      },
+      "reveal": {
+        "computedSize": {
+          "width": 1920,
+          "height": 1080,
+          "presentationWidth": 1766.4,
+          "presentationHeight": 993.6
+        },
+        "scale": 0.92
+      },
+      "index": 45,
+      "indices": {
+        "h": 44,
+        "v": 0
+      }
+    }
+  ],
+  "overflowSlides": []
+}

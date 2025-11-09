@@ -1,0 +1,18 @@
+{
+  "title": "My Presentation",
+  "theme": {
+    "primaryDark": "#303A52",
+    "primaryBlue": "#4A90E2",
+    "primaryAccent": "#F9AA33"
+  },
+  "reveal": {
+    "width": 1920,
+    "height": 1080,
+    "margin": 0.08,
+    "transition": "slide"
+  },
+  "slides": {
+    "dir": "slides",
+    "manifest": "manifest.json"
+  }
+}

@@ -41,16 +41,92 @@
 
 **注**：具体的演示项目（如 `WebLeaper_Presentation/`）不包含在版本控制中，因为它们是项目特定的内容。
 
-## 快速开始
+## 安装
 
-### 1. 克隆仓库
+### 方法 1: 使用 Snap（推荐）
+
+```bash
+# 从源码构建 snap 包
+git clone https://github.com/demon2036/ppt-agent.git
+cd ppt-agent
+snapcraft
+
+# 安装构建好的 snap 包
+sudo snap install --dangerous ppt-agent_1.0_amd64.snap
+
+# 或者，从 Snap Store 安装（待发布）
+# sudo snap install ppt-agent
+```
+
+安装后可用的命令：
+- `ppt-agent.serve` - 启动 HTTP 服务器预览演示
+- `ppt-agent.export-pdf` - 导出演示为 PDF
+- `ppt-agent.pdf-to-ppt` - 将 PDF 转换为 PPT
+
+### 方法 2: 直接克隆仓库
 
 ```bash
 git clone https://github.com/demon2036/ppt-agent.git
 cd ppt-agent
 ```
 
-### 2. 从模板创建新演示
+**依赖安装**：
+```bash
+# Ubuntu/Debian
+sudo apt install python3 chromium-browser poppler-utils
+
+# macOS
+brew install python3 chromium poppler
+
+# Python 依赖（用于 PPT 转换）
+pip install -r reveal-presentation-core/tools/requirements_ppt.txt
+```
+
+## 快速开始
+
+### 1. 创建新演示（使用 Snap）
+
+```bash
+# 进入工作目录
+cd ~/presentations
+
+# 复制模板（从 snap 安装路径）
+cp -r /snap/ppt-agent/current/reveal-presentation-core/templates MyPresentation
+cd MyPresentation
+
+# 创建必要的目录
+mkdir -p slides presentation_images
+
+# 创建幻灯片清单
+cat > slides/manifest.json << 'EOF'
+[
+  {"file": "01_title.html"},
+  {"file": "02_content.html"}
+]
+EOF
+
+# 创建第一张幻灯片
+cat > slides/01_title.html << 'EOF'
+<section class="title-slide">
+  <h1>我的演示</h1>
+  <p class="subtitle">精简有力的副标题</p>
+  <p class="authors">作者名</p>
+  <p class="affiliation">机构名</p>
+</section>
+EOF
+
+# 启动预览服务器
+ppt-agent.serve
+# 打开 http://localhost:8000/index.html
+
+# 导出为 PDF
+ppt-agent.export-pdf
+
+# 转换为 PPT
+ppt-agent.pdf-to-ppt out/index.pdf out/presentation.pptx
+```
+
+### 2. 创建新演示（从源码）
 
 ```bash
 # 从核心模板创建新项目
@@ -109,6 +185,118 @@ pip install -r ../reveal-presentation-core/tools/requirements_ppt.txt
 
 # 转换
 python3 ../reveal-presentation-core/tools/pdf_to_ppt.py out/index.pdf out/presentation.pptx
+```
+
+## 构建和测试 Snap 包
+
+### 前置要求
+
+```bash
+# Ubuntu/Debian
+sudo apt install snapd snapcraft
+
+# 确保 snapd 正在运行
+sudo systemctl enable --now snapd
+```
+
+### 构建 Snap
+
+```bash
+# 在项目根目录
+cd ppt-agent
+
+# 清理之前的构建（如果有）
+snapcraft clean
+
+# 构建 snap 包
+snapcraft
+
+# 构建完成后会生成：ppt-agent_1.0_amd64.snap
+```
+
+### 安装本地构建的 Snap
+
+```bash
+# 安装（--dangerous 表示安装未签名的本地包）
+sudo snap install --dangerous ppt-agent_1.0_amd64.snap
+
+# 验证安装
+snap list | grep ppt-agent
+
+# 测试命令
+ppt-agent.serve --help
+```
+
+### 测试 Snap 功能
+
+```bash
+# 1. 创建测试演示
+mkdir -p ~/test-presentation/slides
+cd ~/test-presentation
+
+# 复制模板
+cp -r /snap/ppt-agent/current/reveal-presentation-core/templates/* .
+
+# 创建简单的幻灯片
+cat > slides/manifest.json << 'EOF'
+[{"file": "01_test.html"}]
+EOF
+
+cat > slides/01_test.html << 'EOF'
+<section class="title-slide">
+  <h1>测试演示</h1>
+  <p class="subtitle">Snap 安装测试</p>
+</section>
+EOF
+
+# 2. 启动服务器
+ppt-agent.serve &
+SERVER_PID=$!
+
+# 等待服务器启动
+sleep 2
+
+# 3. 导出 PDF（需要在另一个终端或等待）
+# 先停止服务器
+kill $SERVER_PID
+
+# 导出测试
+ppt-agent.export-pdf index.html out/test.pdf
+
+# 4. 转换为 PPT（如果 PDF 导出成功）
+ppt-agent.pdf-to-ppt out/test.pdf out/test.pptx
+
+# 5. 验证输出
+ls -lh out/
+```
+
+### 卸载 Snap
+
+```bash
+sudo snap remove ppt-agent
+```
+
+### 故障排除
+
+**问题：构建失败，提示缺少依赖**
+```bash
+# 安装额外的构建依赖
+sudo apt install gcc python3-dev build-essential
+```
+
+**问题：PDF 导出失败**
+```bash
+# 检查 Chromium 是否正确安装在 snap 中
+snap connections ppt-agent | grep browser-support
+
+# 如果缺少权限，手动连接
+sudo snap connect ppt-agent:browser-support
+```
+
+**问题：无法访问家目录**
+```bash
+# 确保 home 接口已连接
+sudo snap connect ppt-agent:home
 ```
 
 ## 使用 Claude Code Agent 制作演示

@@ -1,0 +1,101 @@
+name: ppt-agent
+base: core22
+version: '1.0'
+summary: Reveal Presentation Framework with AI-assisted workflow
+description: |
+  A modular presentation framework based on Reveal.js, designed for academic
+  presentations and technical talks. Features:
+
+  - AI-driven content generation via Claude Code Agent
+  - Modular design with complete separation of styles, logic, and content
+  - Perfect PDF/PPT export (1920×1080, 16:9 aspect ratio)
+  - Zero-configuration projects (Core-First architecture)
+  - Responsive design using relative units (em/vh)
+  - Fast iteration with instant preview and automatic overflow detection
+
+  Commands:
+  - ppt-agent.serve: Start HTTP server to preview presentations
+  - ppt-agent.export-pdf: Export presentation to PDF
+  - ppt-agent.pdf-to-ppt: Convert PDF to PowerPoint format
+
+grade: stable
+confinement: strict
+
+architectures:
+  - build-on: amd64
+
+apps:
+  serve:
+    command: bin/serve.sh
+    plugs:
+      - network
+      - network-bind
+      - home
+    environment:
+      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$SNAP/lib/python3.10/site-packages
+
+  export-pdf:
+    command: bin/export-pdf.sh
+    plugs:
+      - network
+      - network-bind
+      - home
+      - browser-support
+    environment:
+      CHROME_BIN: $SNAP/chromium/chrome-wrapper
+      CHROME_FLAGS: "--no-sandbox --disable-dev-shm-usage"
+
+  pdf-to-ppt:
+    command: bin/pdf-to-ppt.sh
+    plugs:
+      - home
+    environment:
+      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$SNAP/lib/python3.10/site-packages
+
+parts:
+  presentation-core:
+    plugin: dump
+    source: .
+    organize:
+      reveal-presentation-core: reveal-presentation-core/
+      example: example/
+      README.md: README.md
+      PRESENTATION_SOP.md: PRESENTATION_SOP.md
+    stage:
+      - reveal-presentation-core
+      - example
+      - README.md
+      - PRESENTATION_SOP.md
+
+  python-deps:
+    plugin: python
+    source: .
+    python-packages:
+      - pdf2image>=1.16.0
+      - python-pptx>=0.6.21
+      - Pillow>=9.0.0
+    stage-packages:
+      - python3
+      - python3-pip
+      - poppler-utils
+
+  chromium:
+    plugin: nil
+    stage-packages:
+      - chromium-browser
+    override-build: |
+      craftctl default
+    organize:
+      usr/lib/*/chromium-browser: chromium/
+
+  scripts:
+    plugin: dump
+    source: snap/local/
+    organize:
+      '*.sh': bin/
+
+layout:
+  /usr/lib/$CRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
+    bind: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET/webkit2gtk-4.0
+  /usr/share/chromium:
+    bind: $SNAP/usr/share/chromium

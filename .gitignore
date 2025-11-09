@@ -52,3 +52,14 @@ build/
 
 Thumbs.db
 Desktop.ini
+
+# ====================
+# 示例项目例外（允许提交）
+# ====================
+
+# 允许示例项目的输出文件
+!example/**/out/
+!example/**/out/**
+!example/**/*.pdf
+!example/**/*.pptx
+!example/**/*.png

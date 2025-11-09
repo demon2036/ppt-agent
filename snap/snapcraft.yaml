@@ -42,7 +42,6 @@ apps:
       - home
       - browser-support
     environment:
-      CHROME_BIN: $SNAP/chromium/chrome-wrapper
       CHROME_FLAGS: "--no-sandbox --disable-dev-shm-usage"
 
   pdf-to-ppt:
@@ -79,23 +78,8 @@ parts:
       - python3-pip
       - poppler-utils
 
-  chromium:
-    plugin: nil
-    stage-packages:
-      - chromium-browser
-    override-build: |
-      craftctl default
-    organize:
-      usr/lib/*/chromium-browser: chromium/
-
   scripts:
     plugin: dump
     source: snap/local/
     organize:
       '*.sh': bin/
-
-layout:
-  /usr/lib/$CRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
-    bind: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET/webkit2gtk-4.0
-  /usr/share/chromium:
-    bind: $SNAP/usr/share/chromium

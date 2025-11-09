@@ -31,17 +31,32 @@ else
 fi
 
 # Find Chrome/Chromium binary
+# Priority order: CHROME_BIN env var > snap chromium > system chromium/chrome
 if [ -n "$CHROME_BIN" ]; then
   CHROME="$CHROME_BIN"
+elif command -v chromium >/dev/null 2>&1; then
+  # This will use snap's chromium if installed via: sudo snap install chromium
+  CHROME=chromium
 elif command -v chromium-browser >/dev/null 2>&1; then
   CHROME=chromium-browser
-elif command -v chromium >/dev/null 2>&1; then
-  CHROME=chromium
 elif command -v google-chrome >/dev/null 2>&1; then
   CHROME=google-chrome
+elif command -v chrome >/dev/null 2>&1; then
+  CHROME=chrome
 else
-  echo "Error: Chrome/Chromium not found!"
-  echo "Please install chromium-browser or google-chrome"
+  echo "❌ Error: Chrome/Chromium not found!"
+  echo ""
+  echo "Please install Chromium using one of the following methods:"
+  echo ""
+  echo "  1. Via Snap (Recommended):"
+  echo "     sudo snap install chromium"
+  echo ""
+  echo "  2. Via apt (Ubuntu/Debian):"
+  echo "     sudo apt install chromium-browser"
+  echo ""
+  echo "  3. Via Google Chrome:"
+  echo "     Download from https://www.google.com/chrome/"
+  echo ""
   exit 1
 fi
 

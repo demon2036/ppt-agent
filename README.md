@@ -46,7 +46,10 @@
 ### 方法 1: 使用 Snap（推荐）
 
 ```bash
-# 从源码构建 snap 包
+# 1. 安装 Chromium（PDF 导出需要）
+sudo snap install chromium
+
+# 2. 从源码构建并安装 ppt-agent snap 包
 git clone https://github.com/demon2036/ppt-agent.git
 cd ppt-agent
 snapcraft
@@ -60,8 +63,10 @@ sudo snap install --dangerous ppt-agent_1.0_amd64.snap
 
 安装后可用的命令：
 - `ppt-agent.serve` - 启动 HTTP 服务器预览演示
-- `ppt-agent.export-pdf` - 导出演示为 PDF
+- `ppt-agent.export-pdf` - 导出演示为 PDF（需要 Chromium）
 - `ppt-agent.pdf-to-ppt` - 将 PDF 转换为 PPT
+
+**注意**：PDF 导出功能需要 Chromium/Chrome 浏览器。推荐使用 `sudo snap install chromium` 安装。
 
 ### 方法 2: 直接克隆仓库
 
@@ -72,7 +77,11 @@ cd ppt-agent
 
 **依赖安装**：
 ```bash
-# Ubuntu/Debian
+# Ubuntu/Debian - 方案 A: 使用 Snap（推荐）
+sudo snap install chromium
+sudo apt install python3 poppler-utils
+
+# Ubuntu/Debian - 方案 B: 使用 apt
 sudo apt install python3 chromium-browser poppler-utils
 
 # macOS
@@ -197,6 +206,9 @@ sudo apt install snapd snapcraft
 
 # 确保 snapd 正在运行
 sudo systemctl enable --now snapd
+
+# 安装 Chromium（PDF 导出需要）
+sudo snap install chromium
 ```
 
 ### 构建 Snap
@@ -284,9 +296,21 @@ sudo snap remove ppt-agent
 sudo apt install gcc python3-dev build-essential
 ```
 
-**问题：PDF 导出失败**
+**问题：PDF 导出失败（找不到 Chromium）**
 ```bash
-# 检查 Chromium 是否正确安装在 snap 中
+# 安装 Chromium snap
+sudo snap install chromium
+
+# 验证 Chromium 可用
+chromium --version
+
+# 如果使用的是 Google Chrome
+# 从 https://www.google.com/chrome/ 下载安装
+```
+
+**问题：PDF 导出失败（权限问题）**
+```bash
+# 确保 browser-support 接口已连接
 snap connections ppt-agent | grep browser-support
 
 # 如果缺少权限，手动连接

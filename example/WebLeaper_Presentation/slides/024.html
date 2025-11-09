@@ -1,0 +1,41 @@
+            <section class="dense-slide">
+                <h2>深入分析 (1)：为何 Reverse-Union 效果最好？（2/2）</h2>
+
+                <div class="two-columns" style="gap: 30px;">
+                    <div>
+                        <h3>1. Basic 版本的问题</h3>
+                        <ul class="compact-list">
+                            <li><span class="crossmark">✗</span> 性能反而下降，尤其在 GAIA 上（−26.91）</li>
+                            <li><strong>原因：</strong>任务过于简单，模型学会了"抄近道"</li>
+                            <li><strong>后果：</strong>过拟合简单模式，泛化能力变差</li>
+                            <li><strong>教训：</strong>仅仅增加实体密度还不够，<span class="highlight">任务复杂度同样重要</span></li>
+                        </ul>
+
+                        <h3 style="margin-top: 25px;">2. Union 版本的提升</h3>
+                        <ul class="compact-list">
+                            <li><span class="checkmark">✓</span> 平均提升 +3.26，大部分基准都有提升</li>
+                            <li><strong>原因：</strong>多源信息整合迫使模型进行复杂推理</li>
+                            <li><strong>意义：</strong>证明了结构复杂度的重要性</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3>3. Reverse-Union 版本的最佳效果</h3>
+                        <ul class="compact-list">
+                            <li><span class="checkmark">✓</span> 平均提升 +4.34，在大多数基准上最好</li>
+                            <li><strong>原因：</strong>
+                                <ul>
+                                    <li>不仅结构复杂，还有逆向推理设计</li>
+                                    <li>杜绝了关键词搜索捷径</li>
+                                    <li>先演绎 → 再规划 → 再搜索（锻炼高级认知能力）</li>
+                                </ul>
+                            </li>
+                            <li><strong>特别优势：</strong>在 WideSearch 上提升最大（+10.92）</li>
+                        </ul>
+
+                        <div class="solution-box" style="margin-top: 20px;">
+                            <strong>结论：</strong>任务复杂度的递进设计至关重要。Reverse-Union 通过逆向推理，从根本上提升了代理的<span class="highlight">规划和推理能力</span>。
+                        </div>
+                    </div>
+                </div>
+            </section>

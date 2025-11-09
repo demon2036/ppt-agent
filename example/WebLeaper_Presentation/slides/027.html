@@ -1,0 +1,33 @@
+            <section class="dense-slide">
+                <h2>深入分析 (3)：强化学习带来的"最后一跃"（2/2）</h2>
+                <div class="two-columns" style="gap: 30px;">
+                    <div>
+                        <h3>RL 特别有效的场景</h3>
+                        <ul class="compact-list">
+                            <li><strong>WideSearch:</strong> 需要精细策略的任务，RL 提升巨大</li>
+                            <li><strong>GAIA:</strong> 需要准确判断的任务，RL 带来 3.3 个点提升</li>
+                        </ul>
+
+                        <div class="solution-box" style="margin-top: 20px;">
+                            <strong>小结：</strong>RL 通过稳定、细粒度的奖励信号，促使代理形成更高效的检索-推理循环。
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="presentation_images/reward_curve_compact.png" alt="奖励曲线" style="max-height: 300px;">
+                        <p class="image-caption">混合奖励系统的训练曲线</p>
+
+                        <h3 style="margin-top: 8px;">奖励曲线解读</h3>
+                        <div class="insight-box" style="text-align: left; padding: 10px; font-size: 0.9em;">
+                            <ul class="compact-list">
+                                <li><span class="checkmark">✓</span> 稳步上扬：学习有效</li>
+                                <li><span class="checkmark">✓</span> 无剧烈震荡：训练稳定</li>
+                                <li><span class="checkmark">✓</span> 持续增长：尚有潜力（约 135 步停止）</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-box" style="margin-top: 12px;">
+                    <strong>结论：</strong>WebLeaper 数据不仅是优秀的 SFT 教材，更是高质量的 RL 训练场，成功引导代理学会更高级、更优化的信息寻求策略。
+                </div>
+            </section>

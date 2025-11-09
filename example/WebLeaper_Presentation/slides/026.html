@@ -1,0 +1,42 @@
+            <section class="dense-slide">
+                <h2>深入分析 (3)：强化学习带来的"最后一跃"（1/2）</h2>
+
+                <div class="two-columns" style="gap: 30px;">
+                    <div>
+                        <h3>RL 性能提升</h3>
+                        <table style="font-size: 0.9em;">
+                            <tr>
+                                <th>Stage</th>
+                                <th>BrowseComp</th>
+                                <th>GAIA</th>
+                                <th>xbench-DS</th>
+                            </tr>
+                            <tr>
+                                <td>SFT</td>
+                                <td>37.80</td>
+                                <td>69.9</td>
+                                <td>69.0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SFT+RL</strong></td>
+                                <td class="best">38.8 (+1.0)</td>
+                                <td class="best">73.2 (+3.3)</td>
+                                <td class="best">72.0 (+3.0)</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div>
+                        <h3>全面性能提升</h3>
+                        <ul class="compact-list">
+                            <li>四个基准均有提升</li>
+                            <li><strong>最大增益：</strong>WideSearch SR (+2.5) 与 Row F1 (+8.0)</li>
+                            <li><strong>稳定增益：</strong>GAIA (+3.3)、xbench-DS (+3.0)</li>
+                        </ul>
+
+                        <div class="insight-box" style="margin-top: 16px;">
+                            <strong>启示：</strong>RL 补上了 SFT 的“最后一跃”，将策略从“会做”推向“做得更优”。
+                        </div>
+                    </div>
+                </div>
+            </section>

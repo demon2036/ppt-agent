@@ -1,0 +1,51 @@
+            <section class="ultra-dense-slide">
+                <h2>Version-II: Union - 跨越多源信息整合</h2>
+                <div class="insight-box" style="padding: 12px; margin: 12px 0;">
+                    <strong>核心：</strong>通过"最大二分团枚举"智能融合多个 Basic 任务，创造需要跨源信息整合的复杂任务
+                </div>
+
+                <p style="margin: 15px 0;"><strong>动机：</strong>真实世界问题往往需要<strong>整合多个来源</strong>的信息</p>
+
+                <div class="two-columns" style="gap: 20px;">
+                    <div>
+                        <h3>技术核心 - 最大二分团枚举</h3>
+                        <div class="observation-box" style="padding: 8px; margin: 8px 0; font-size: 0.88em;">
+                            "如何自动发现哪些表格可以被'有意义'地合并？"
+                        </div>
+
+                        <ol style="font-size: 0.85em;">
+                            <li style="margin-bottom: 10px;"><strong>构建二分图</strong>
+                                <ul>
+                                    <li>左：Basic任务树；右：关系集合</li>
+                                    <li>树包含关系则连边</li>
+                                </ul>
+                            </li>
+                            <li><strong>寻找最大二分团</strong>
+                                <ul>
+                                    <li>找共享最多共同关系的任务树</li>
+                                    <li>高效智能的搜索策略</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div>
+                        <h3>任务生成示例</h3>
+                        <div class="solution-box" style="padding: 8px; margin: 8px 0; font-size: 0.86em;">
+                            <p><strong>发现：</strong>'Nobel Prize' 和 'Booker Prize' 共享：</p>
+                            <p style="margin: 8px 0;"><code>has_author</code>, <code>has_nationality</code>, <code>has_award_year</code></p>
+                        </div>
+
+                        <div class="observation-box" style="margin-top: 10px; padding: 8px; font-size: 0.82em;">
+                            <strong>生成问题：</strong>"Which authors have won both the Nobel Prize in Literature and the Booker Prize? List their nationalities."
+                        </div>
+
+                        <h3 style="margin-top: 15px;">贡献</h3>
+                        <ul style="font-size: 0.85em;">
+                            <li>迫使代理学会<span class="highlight">跨源信息整合</span></li>
+                            <li>需要关系运算（如求交集）</li>
+                            <li>显著提升任务认知复杂度</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>

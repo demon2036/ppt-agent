@@ -1,0 +1,52 @@
+            <section class="ultra-dense-slide" style="font-size: 0.82em;">
+                <h2>Version-III: Reverse-Union - 逆向推理对抗捷径（1/2）</h2>
+                <div class="insight-box" style="padding: 0.5em; margin: 0.4em 0;">
+                    <strong>核心观点：</strong>通过颠倒推理顺序，强制代理进行"线索演绎 → 扩展搜索"的深度推理，防止依赖关键词匹配走捷径
+                </div>
+
+                <div class="two-columns" style="gap: 1em;">
+                    <div>
+                        <h3 style="margin: 0.5em 0 0.3em 0;">动机</h3>
+                        <div class="observation-box" style="padding: 0.5em; margin: 0.3em 0; font-size: 0.95em;">
+                            作者指出，即使是 Union 任务，代理也可能通过分别搜索再取交集的方式"走捷径"。`Reverse-Union` 的设计正是为了防止这种情况。
+                        </div>
+
+                        <h3 style="margin: 0.6em 0 0.3em 0;">第一阶段：演绎模糊化 (DEDUCTIVE FUZZ)</h3>
+                        <div class="solution-box" style="padding: 0.5em; margin: 0.3em 0;">
+                            <ul style="margin: 0; line-height: 1.3; font-size: 0.95em;">
+                                <li><strong>起点：</strong>不是明确的实体，而是一组描述性"线索"（第三层实体）</li>
+                                <li><strong>示例：</strong>
+                                    <div class="observation-box" style="margin: 0.3em 0; font-size: 0.9em; padding: 0.4em;">
+                                        "那位在 1980 年代获奖、写了一本关于一群英国男孩被困荒岛的小说的作家..."
+                                    </div>
+                                </li>
+                                <li><strong>要求：</strong>代理必须先<span class="highlight">推理</span>出这是 "William Golding"</li>
+                                <li><strong>目的：</strong>防止直接关键词搜索</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 style="margin: 0.5em 0 0.3em 0;">第二阶段：基于联合的扩展搜索</h3>
+                        <div class="solution-box" style="padding: 0.5em; margin: 0.3em 0;">
+                            <ul style="margin: 0; line-height: 1.3; font-size: 0.95em;">
+                                <li><strong>推理后：</strong>任务并未结束</li>
+                                <li><strong>扩展：</strong>利用推理出的实体的某个属性（如国籍"英国"）作为"枢轴"</li>
+                                <li><strong>最终问题：</strong>
+                                    <div class="observation-box" style="margin: 0.3em 0; font-size: 0.9em; padding: 0.4em;">
+                                        "...找出所有和他一样是英国国籍，并且同时获得了诺贝尔奖和布克奖的作家。"
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <h3 style="margin: 0.8em 0 0.3em 0;">贡献</h3>
+                        <ul style="margin: 0; line-height: 1.3; font-size: 0.95em;">
+                            <li>强制代理进行<span class="highlight">演绎推理</span> (Deductive Reasoning)</li>
+                            <li>需要<strong>多步规划</strong> (Multi-step Planning)</li>
+                            <li>提升鲁棒性，更接近人类的问题解决方式</li>
+                            <li>有效避免了<strong>关键词捷径</strong>，训练更深层次的推理能力</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>

@@ -1,0 +1,49 @@
+            <section class="ultra-dense-slide" style="font-size: 0.8em;">
+                <h2>案例分析：WebLeaper vs. 普通代理（1/2）</h2>
+                <div class="insight-box" style="padding: 0.5em; margin: 0.4em 0;">
+                    <strong>示例任务：</strong>"找出与《蝇王》作者同一国籍，且获得过诺贝尔文学奖的另一位作家。"
+                </div>
+
+                <div class="two-columns" style="gap: 1em; margin-top: 0.6em;">
+                    <div>
+                        <h3 style="margin-bottom: 0.3em;">❌ 普通代理的思考路径</h3>
+                        <pre style="font-size: 0.75em; line-height: 1.4; background: #f5f5f5; padding: 0.6em; border-radius: 0.3em; margin: 0;">
+Step 1: Search("蝇王 作者")
+        → 找到 "William Golding"
+
+Step 2: Search("William Golding 国籍")
+        → 找到 "英国"
+
+Step 3: Search("诺贝尔奖作家名单")
+        → 得到一个长列表（上百名）
+
+Step 4: Search("A 的国籍")
+Step 5: Search("B 的国籍")
+...
+Step N: 逐一排查（非常低效）
+
+<strong>总步数: 15-20 步</strong>
+<strong>特点: 机械、繁琐、缺乏规划</strong></pre>
+                    </div>
+
+                    <div>
+                        <h3 style="margin-bottom: 0.3em;">✅ WebLeaper 的思考路径</h3>
+                        <pre style="font-size: 0.75em; line-height: 1.4; background: #f0fdf4; padding: 0.6em; border-radius: 0.3em; margin: 0;">
+Step 1: Search("《蝇王》作者 国籍")
+        → 一步到位：
+           William Golding, 英国 ✓
+
+Step 2: Search("获得诺贝尔奖的英国作家")
+        → 将多个条件组合成高效查询
+        → 返回：
+           Winston Churchill,
+           Kazuo Ishiguro, ...
+
+Step 3: Visit(相关页面)
+        → 找到答案 ✓
+
+<strong>总步数: 3-4 步</strong>
+<strong>特点: 智能、高效、有规划</strong></pre>
+                    </div>
+                </div>
+            </section>

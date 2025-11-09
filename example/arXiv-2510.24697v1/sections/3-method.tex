@@ -1,0 +1,263 @@
+
+% \vspace{-2mm}
+\section{Method}
+\label{sec:method}
+% \vspace{-2mm}
+
+
+To enhance the information efficiency of the IS agent, our approach trains the model on a calibrated task
+$\gT = \langle q, R \rangle$ together with the corresponding task-solving trajectory $\gH$.
+In prior IS agent training setups, the dataset typically contained only a limited number of target entities ($R$). 
+This design substantially restricts the potential improvement in information-seeking efficiency and, in turn, 
+limits the agent's overall capability. The limitation incurs two problems:
+\vspace{-0.5em}
+\begin{itemize}[left=0.2cm,itemsep=-1pt]
+    \item With a small volume of $R$, it is difficult to train the agent to retrieve information efficiently within a limited context length.
+    \item Our method relies on measuring the information-seeking efficiency ISE. As shown in Eq.~(\ref{eq: V}), a small set of target entities introduces measurement bias in the ISE metric.
+\end{itemize}
+
+To overcome these shortcomings, we introduce \w, a novel data synthesis framework specifically designed to 
+boost information-seeking efficiency. 
+Our method consists of two main components: (1) a QA synthesis pipeline for generating calibrated tasks, and (2) 
+a trajectory construction process for producing realistic task-solving sequences. 
+We describe the QA synthesis pipeline and trajectory construction process in detail in the following subsections. For detailed walkthroughs of the examples for each synthesis version, please refer to Appendix~\ref{sec:appendix_examples}.
+
+% \vspace{-3mm}
+\subsection{Entity-Intensive Task Synthesis}
+% \vspace{-2mm}
+
+\begin{figure}
+\centering
+\setlength{\belowcaptionskip}{-1mm}
+
+\includegraphics[width=1\linewidth]{figures/overview.pdf}
+\caption{An overview of \w{}. The reasoning structure is modeled as a tree. A root entity (question entity) connects to a set of second-layer entities. 
+\textbf{(a) Version-I (Basic)} constructs a simple reasoning tree from a single information source.
+\textbf{(b) Version-II (Union)} creates a complex task by finding a maximal union between two trees that share a common set of relations within their subtrees (e.g., both have ``has\_nationality''). 
+\textbf{(c) Version-III (Reverse-Union)} reverses the reasoning process. It provides fuzzed clues (third-layer entities) as question entities, forcing the agent to first deduce a second-layer anchor entity (an entity from the second layer), then other relevant subtrees.}
+\label{fig:overview}
+% \vspace{-1em}
+\end{figure}
+
+% \vspace{-1mm}
+\subsubsection{Version-I: \texttt{Basic}}
+\label{sec:base_dataset_construction}
+% \vspace{-1mm}
+
+In an information-seeking task, the reasoning structure matters. We use a tree, denoted as $T_i$, to represent this structure, where nodes are entities and edges are relations between them. The IS agent must start with some known entities in the tree and reason along the edges to determine the target ones. To incorporate as many target entities as possible, we use this tree structure for its compact and hierarchical organization.
+
+Synthesizing such a task $\gT = \langle q, R \rangle$ requires a large volume of relevant entities, which is non-trivial. Following the one-entity-at-a-time collection strategy of prior work is prohibitively expensive. Therefore, we exploit the structured tables contained in Wikipedia articles, which encapsulate rich relational information. These tables naturally provide groups of entities connected by specific relationships, enabling us to efficiently construct the reasoning tree $T_i$. We crawled approximately 2 million tables from Wikipedia and applied a multi-stage cleaning procedure, retaining only large, well-formed, and structurally homogeneous tables. The detailed data cleaning procedure and construction rationale are described in Appendix~\ref{sec:appendix_cleaning_basic}.
+
+To construct the reasoning structure illustrated in Figure~\ref{fig:overview}(a), we populate its layers using information from a single table. 
+The entities extracted from the table title form the root of the tree (i.e., the question entities).  
+Next, we employ an LLM to select the most representative, non-redundant column of values from the table—typically the primary key—as the second-layer entities (e.g., ``Czesław Miłosz'').  
+An edge between the root entity and a second-layer entity indicates that the table contains this entity.  
+The third-layer entities are derived from the remaining columns of the table, with their values representing attributes of the corresponding second-layer entity (e.g., ``country: Poland'', ``year: 1980'').  
+In this layer, an edge signifies that the second-layer entity possesses the given property defined by the third-layer entity.
+
+Each second-layer entity and its associated third-layer entities form a subtree, which we denote as $S_{i,j}$. These subtrees, each possessing a set of relations $\text{Rel}(S_{i,j})$ that connect its layers, represent cohesive units of information (e.g., a specific laureate and all their details). The full reasoning tree $T_i$ is thus composed of a set of such subtrees $\{S_{i,j}\}$. The question provides the root entities, while all entities in the subtrees (both second and third layers) constitute the final answer. The detailed construction process and the required reasoning path for the example task are explained in Appendix~\ref{sec:example Version-I: Basic}.
+
+% \vspace{-2mm}
+\subsubsection{Version-II: \texttt{Union}}
+\label{sec:union_synthesis}
+% \vspace{-2mm}
+
+While effective, the reasoning structure of our basic tasks is derived from single sources, limiting their structural complexity and the scope of questions we can pose. To address this, we aim to construct tasks with a more intricate reasoning structure that spans multiple information sources by uniting reasoning trees from our \texttt{Basic} version that share similar themes and structures.
+
+To generate more challenging questions, we propose uniting reasoning subtrees in \texttt{Basic} version that share similar themes and structures. 
+A naive approach, such as randomly combining subtrees, often results in semantically incoherent questions. To systematically discover the most substantial integration opportunities, our approach models this as a \texttt{Union} operation, which identifies multiple reasoning trees whose respective subtrees share some common relations. 
+
+The primary challenge is to systematically search the entire collection of trees to find all groups that are suitable for union. To avoid a combinatorial explosion from enumerating all possible combinations, we develop an algorithm to efficiently discover only \textit{maximal unions}. This problem is formally modeled as Maximal Biclique Enumeration (see Appendix~\ref{sec:appendix_maximal_fusion}), which effectively identifies groups of reasoning subtrees and their shared subtree relations.
+
+As illustrated in Figure~\ref{fig:overview}(b), the reasoning trees for ``Nobel Prize in Literature laureates'' and ``Booker Prize winners'' both contain subtrees where second-layer entities (authors) are connected to third-layer entities via relations like ``has\_nationality'' and ``has\_name''. Our method identifies this shared subtree structure. Relations not shared across all sets of subtrees, such as ``has\_gender'' (present only in the Nobel tree), are discarded during the union.
+
+Once a maximal union is identified, we leverage an LLM to
+synthesize a question based on the common features of the selected subtrees.
+For instance, the question ``Which authors have won both the Nobel Prize in Literature and the Booker Prize?'' requires identifying the two sets of laureates as intermediate ``Target Entities'' and then finding their intersection to produce the final ``Target Entities''. The complete walkthrough is in Appendix~\ref{sec:example Version-II: Union}.
+
+% \vspace{-1em}
+\subsubsection{Version-III: \texttt{Reverse-Union}}
+\label{sec:fuzz_generation}
+% \vspace{-1mm}
+
+While the \texttt{Union} method generates complex, multi-source tasks, a vulnerability remains: an agent could solve the query and use direct keyword searches on the constituent sources (e.g., search ``Nobel Prize winners,'' then ``Booker Prize winners''). This approach circumvents the intended synthesis of information, reducing the cognitive load and failing to stimulate true reasoning capabilities similar to \texttt{WebSailor}~\citep{li2025websailornavigatingsuperhumanreasoning}.
+To address this, we introduce \texttt{Reverse-Union}, a paradigm designed to enforce a more robust cognitive workflow by reversing the standard reasoning flow. As illustrated in Figure~\ref{fig:overview}(c), this method combines two stages to construct a challenging task:
+\vspace{-1em}
+\begin{itemize}[left=0.2cm,itemsep=-1pt]
+    \item \textbf{Deductive Fuzz:} This stage implements the fuzz by defining the ``Question Entities'' as a set of descriptive third-layer entities. Instead of being named directly, a central ``anchor'' entity (an entity from the second layer) is described through its corresponding third-layer entities. In the example, the description ``the 1980s prize-winner that wrote a novel about a group of British boys stranded on an uninhabited island'' serves as clues in the form of ``Question Entities''. An agent must first deduce from these clues to identify the anchor entity, ``William Golding''.
+
+    \item \textbf{Union-based Search Construction:} After fuzzing the anchor, this stage constructs the expansive search part of the task, ensuring the anchor serves only as a bridge to the final answer. To achieve this, we first select a specific third-layer entity from the anchor's subtree (e.g., his country) to act as a pivot. We then formulate the remainder of the question to compel an agent to use this pivot to launch a new search across the unified trees. The final Target Entities are thus defined as the set of second-layer entities that share this pivot attribute (i.e., are also British) and satisfy the original intersection condition (i.e., winning both prizes).
+\end{itemize}
+By structuring tasks this way, \texttt{Reverse-Union} prevents agents from succeeding with simple keyword searching and mandates a more robust, multi-step reasoning process. The detailed process of question generation and the required reasoning path are explained in Appendix~\ref{sec:example Version-III: Reverse-Union}.
+
+% \vspace{-1em}
+\subsection{Information-Guided Trajectory Construction}
+\label{sec:reject_sampling}
+
+After synthesizing the task, this section elaborates on the construction of task-solving trajectories. 
+As shown in Eq.(\ref{eq: trajectory}), our agent solves a task within the ReAct framework~\citep{yao2023react}. We equip the agent with the following tools:
+\vspace{-0.5em}
+\begin{itemize}[left=0.4cm,itemsep=-1pt]
+    \item \texttt{Search} This action enables the agent to conduct Google search by several queries. The parameters of this tool are $\{\textit{queries}, \textit{filter\_year}\}$, enabling temporal filtering of search results. This tool would return the top relevant URLs and their snippets as the observation.
+    
+    \item \texttt{Visit} This action enables the agent to visit multiple URLs. The parameters of this tool are $\{\textit{urls}, \textit{goal}\}$. This tool would return the summarized visited paragraphs as the observation.
+    
+\end{itemize}
+
+After generating a large set of trajectories by executing our constructed tasks with an open-source model, we apply a filtering procedure to select high-quality examples for training.
+Our goal is to retain trajectories that demonstrate both accuracy in collecting the required entities and efficiency in the use of actions, in accordance with the metrics defined in Section~\ref{subsec:quantifying_collection}.
+Specifically, we impose the following selection criteria:
+
+% \vspace{-1em}
+
+\paragraph{Coverage Criterion.}
+We require that the trajectory achieve sufficient completeness in information collection. Formally, we keep only those trajectories whose ISR satisfies $\mathrm{ISR} > \alpha$, where $\alpha$ is a predefined coverage threshold. To compute ISR, we accumulate the obtained target entities in all actions. We compute $\mathrm{ISR}$ as Eq.(~\ref{eq:ISR}).
+
+% \vspace{-1em}
+
+\paragraph{Efficiency Criterion.}
+We further require that the trajectory maintain high efficiency in discovering useful entities. This translates into selecting those trajectories whose ISE satisfies $\mathrm{ISE} > \beta$, where $\beta$ is a predefined efficiency threshold. For $\mathrm{ISE}$, we accumulate the obtained target entities in \texttt{Visit} actions. The reason for not including $\texttt{Search}$ in $\mathrm{ISE}$ is that we observe entities found in $\texttt{Search}$ are less precise and would be updated by the following $\texttt{Visit}$ action. We compute $\mathrm{ISR}$ as Eq.(\ref{eq:ISE}).
+
+Through this filtering process, we ensure that the retained trajectories are both accurate in acquiring the target entities and efficient in their action usage, providing strong supervision signals for training agents to perform precise and effective information-seeking.
+
+
+% \vspace{-1em}
+\subsection{Reinforcement Learning with Hybrid Reward Systems}
+\label{sec:hybrid_reward_system}
+
+Following supervised fine-tuning (SFT) on the trajectories generated via our information-guided method (Section~\ref{sec:reject_sampling}), we further enhance the agent's policy using reinforcement learning (RL). A critical component of RL is the reward function, which provides the training signal. However, standard reward mechanisms are fundamentally misaligned with the entity-intensive tasks synthesized by \w{}. The most common approach, a simple binary reward (e.g., success/failure), suffers from extreme sparsity. This issue is dramatically exacerbated in our setting, where a task may require dozens of entities; rewarding the agent only upon perfect completion of such a large set makes positive feedback so rare that effective learning becomes nearly impossible.
+
+Furthermore, the very methods for implementing a reward function—even a more granular one—present their own intractable challenges. On one hand, conventional automated metrics like Exact Match or word-level F1 scores are too brittle. They cannot gracefully handle minor semantic variations (e.g., ``USA'' vs. ``United States'') and would incorrectly penalize the agent, a problem that compounds severely across a large entity set. On the other hand, deploying a more sophisticated LLM-as-a-Judge to evaluate correctness seems promising, but it struggles with scalability and reliability. Asking a judge model to accurately verify a long list of entities in a single assessment imposes a high cognitive load, leading to inconsistent scores, while running it for every single entity is prohibitively expensive for RL. This leaves us in a predicament: simple methods are too inaccurate, and accurate methods are too impractical.
+
+To overcome these intertwined challenges, we design a Hybrid Reward System. This system provides a nuanced, accurate, and cost-effective training signal, specifically tailored to the unique demands of our entity-intensive tasks while maintaining compatibility with standard benchmarks. It is composed of two core components: a granular, F-score-based reward for our synthesized tasks, and the retention of conventional reward functions for existing public benchmark data.
+
+% \paragraph{Granular F-Score for Entity-Intensive Tasks.}
+% For the approximately 500 entity-intensive QA pairs reserved for RL, we develop a fine-grained reward function that assesses the correctness of the agent's collected entity set $O$ against the ground-truth set $R$. Instead of a monolithic judgment, we evaluate at the individual entity level. To balance accuracy and efficiency, we first categorize entities in the ground-truth set $R$ by their semantic type (e.g., person names, dates, organizations) and assign an appropriate evaluation modality to each category. For instance, person names might be evaluated using near-exact match to handle minor variations, while more abstract concepts might require a targeted LLM-as-a-Judge assessment.
+
+% Let $s(e_o, e_r) \in [0, 1]$ be a scoring function that measures the semantic similarity between a retrieved entity $e_o \in O$ and a ground-truth entity $e_r \in R$. Based on this, we define precision ($\gP$) and recall ($\gR_c$) as follows:
+% \begin{align}
+%     \gP &= \frac{1}{|O|} \sum_{e_o \in O} \max_{e_r \in R} s(e_o, e_r) \\
+%     \gR_c &= \frac{1}{|R|} \sum_{e_r \in R} \max_{e_o \in O} s(e_o, e_r)
+% \end{align}
+% This formulation credits the agent for finding entities that are semantically equivalent to the ground truth, even if not lexically identical. We then aggregate these values using a weighted F-score to compute the final reward for the task. This addresses potential biases in our synthesized ground-truth set $R$, which may be slightly over- or under-complete. The reward $\mathcal{R}_{\w}$ is defined as:
+% \begin{equation}
+% \mathcal{R}_{\w} = (1 + \omega^2) \frac{\gP \cdot \gR_c}{\omega^2 \gP + \gR_c}
+% \end{equation}
+% where $\omega$ is a hyperparameter that balances the importance of precision and recall. A value of $\omega > 1$ prioritizes recall, while $\omega < 1$ emphasizes precision.
+
+\paragraph{Granular F-Score for Entity-Intensive Tasks.}
+For the approximately 500 entity-intensive QA pairs reserved for RL, we develop a fine-grained reward function based on the $\mathrm{ISR}$ metric. Recall that $\mathrm{ISR} = \frac{|R \cap O|}{|R|}$ (Equation~\ref{eq:ISR}) measures the recall of the retrieved entities.
+Building upon $\mathrm{ISR}$ as our measure of recall, we designed a more comprehensive reward signal that also accounts for precision. An agent could otherwise achieve a high score by retrieving many irrelevant entities.
+% However, $\mathrm{ISR}$ alone is insufficient for a robust RL reward signal, as it only measures recall; an agent could achieve a high score by retrieving many irrelevant entities. A complete reward signal must also account for precision.
+
+Furthermore, a practical reward function must gracefully handle minor semantic variations (e.g., ``USA'' vs. ``United States''). Therefore, we define soft versions of precision and recall by introducing a scoring function $s(e_o, e_r) \in [0, 1]$ that measures the semantic similarity between a retrieved entity $e_o \in O$ and a ground-truth entity $e_r \in R$. Instead of a monolithic judgment, we evaluate at the individual entity level. To balance accuracy and efficiency, we first categorize entities in the ground-truth set $R$ by their semantic type (e.g., person names, dates, organizations) and assign an appropriate evaluation modality $s$ to each category. For instance, person names might be evaluated using near-exact match to handle minor variations, while more abstract concepts might require a targeted LLM-as-a-Judge assessment.
+
+Based on this semantic scoring function $s$, we define our soft recall $\gR_c$ (a generalization of $\mathrm{ISR}$) and soft precision $\gP$:
+\begin{align}
+    \gR_c &= \frac{1}{|R|} \sum_{e_r \in R} \max_{e_o \in O} s(e_o, e_r) \\
+    \gP &= \frac{1}{|O|} \sum_{e_o \in O} \max_{e_r \in R} s(e_o, e_r)
+\end{align}
+This formulation credits the agent for finding entities that are semantically equivalent to the ground truth. We then aggregate $\gP$ and $\gR_c$ using a weighted F-score to compute the final reward $\mathcal{R}_{\w}$. This addresses potential biases in our synthesized ground-truth set $R$, which may be slightly over- or under-complete. The reward $\mathcal{R}_{\w}$ is defined as:
+\begin{equation}
+\mathcal{R}_{\w} = (1 + \omega^2) \frac{\gP \cdot \gR_c}{\omega^2 \gP + \gR_c}
+\end{equation}
+where $\omega$ is a hyperparameter that balances the importance of precision and recall. A value of $\omega > 1$ prioritizes recall (aligning more closely with the original goal of $\mathrm{ISR}$), while $\omega < 1$ emphasizes precision.
+
+\paragraph{Hybrid Integration.}
+For tasks originating from existing training QA, we retain their original, often binary, reward functions, which we denote as $\mathcal{R}_{\text{legacy}}$. Our final hybrid reward function, $\mathcal{R}_{\text{hybrid}}$, is therefore conditional on the task's origin, ensuring that the agent is evaluated appropriately for each data source:
+\begin{equation}
+\mathcal{R}_{\text{hybrid}}(\mathcal{H}_T, \mathcal{T}) =
+\begin{cases}
+\mathcal{R}_{\w}(O, R) & \text{if } \mathcal{T} \text{ is from \w} \\
+\mathcal{R}_{\text{legacy}}(O, R) & \text{otherwise}
+\end{cases}
+\end{equation}
+This hybrid reward signal provides rich, fine-grained feedback on our entity-intensive tasks while maintaining compatibility with established evaluation protocols. The agent's policy is then optimized against this comprehensive reward using Group Relative Policy Optimization (GRPO)~\citep{shao2024deepseekmathpushinglimitsmathematical}, enabling it to refine its information-seeking strategies effectively.
+
+
+\begin{table}
+\small
+\centering
+\caption{Results on multiple benchmarks.
+All benchmarks except WideSearch report \texttt{Pass@1}.
+WideSearch reports Success Rate (\texttt{SR}), \texttt{Row F1}, and \texttt{Item F1}.
+\textbf{Bold} scores indicate the highest values among all open-source agents. \texttt{B} and \texttt{C} stand for base and comprehensive training setting.
+}
+\resizebox{\columnwidth}{!}{%
+\setlength{\tabcolsep}{6pt} % 调整列间距
+\renewcommand{\arraystretch}{1} % 调整行高
+\begin{tabular}{lccccccc}
+\toprule
+\multirow{2.5}{*}{\textbf{Model / Framework}} 
+& \multirow{2.5}{*}{\textbf{BrowseComp}} 
+& \multirow{2.5}{*}{\textbf{GAIA}} 
+& \multirow{2.5}{*}{\textbf{xbench-DS}} 
+& \multirow{2.5}{*}{\textbf{Seal-0}} 
+& \multicolumn{3}{c}{\textbf{WideSearch}} \\
+\cmidrule(lr){6-8}
+ & & & & & \texttt{SR} & \texttt{Row F1} & \texttt{Item F1} \\
+\midrule
+\multicolumn{8}{c}{\cellcolor{blue!10} \textbf{\textit{Proprietary Agents}}} \\
+\midrule
+\texttt{Claude-4-Sonnet} & 12.2 & 68.3 & 64.6 & -- & 2.3 & 31.7 & 57.9 \\
+\texttt{OpenAI-o3} & 49.7 & 70.5 & 66.7 & 18.9 & 4.5 & 34.0 & 52.6 \\
+\texttt{OpenAI DeepResearch} & 51.5 & 67.4 & -- & -- & -- & -- & -- \\
+\midrule
+\multicolumn{8}{c}{\cellcolor{blue!10} \textbf{\textit{Open-Source Agents}}} \\
+\midrule
+\texttt{ASearcher-Web-32B} & 5.2 & 52.8 & 42.1 & -- & -- & -- & -- \\
+\texttt{DeepDive-32B} & 14.8 & -- & 50.5 & -- & -- & -- & -- \\
+\texttt{DeepDiver-V2-38B} & 13.4 & -- & 53.0 & -- & -- & -- & -- \\
+\texttt{MiroThinker-32B-DPO-v0.2} & 13.0 & 64.1 & -- & -- & -- & -- & -- \\
+\texttt{Kimi-K2-Instruct-1T} & 14.1 & 57.7 & 50.0 & -- & 1.1 & \textbf{29.7} & \textbf{54.4} \\
+\texttt{WebExplorer-8B} & 15.7 & 50.0 & 53.7 & -- & -- & -- & -- \\
+\texttt{WebDancer-QwQ-32B} & 3.8 & 51.5 & 38.3 & -- & 0.0 & 9.3 & 34.5 \\
+\texttt{WebSailor-32B} & 10.5 & 53.2 & 53.3 & 21.3 & 0.0 & 2.1 & 5.5 \\
+\texttt{WebShaper-QwQ-32B} & -- & 53.3 & 35.0 & -- & 0.0 & 9.9 & 31.5 \\
+\midrule
+\texttt{WebLeaper-Union B} & 22.1 & 69.9 & 62.3 & 35.1 & \textbf{4.0} & 22.2 & 34.5 \\
+\texttt{WebLeaper-Reverse-Union B} & 23.0 & 67.0 & 66.0 & 37.2 & \textbf{4.0} & 25.8 & 40.8 \\
+\texttt{WebLeaper-Reverse-Union C} & \textbf{38.8} & \textbf{73.2} & \textbf{72.0} & \textbf{48.6} & \textbf{4.0} & \textbf{31.0} & \textbf{48.8} \\
+\bottomrule
+\end{tabular}
+}
+\label{tab:main_result}
+\vspace{-1em}
+\end{table}
+
+
+\paragraph{Policy Optimization with Hybrid Reward.}
+The agent's policy, denoted $\pi_\theta$ parameterized by $\theta$, is optimized using GRPO. For each task $\mathcal{T}$ in our RL dataset, we sample a group of $k$ trajectories $\{\mathcal{H}_1, \dots, \mathcal{H}_k\}$ from the current policy $\pi_\theta$. Each trajectory $\mathcal{H}_i$ is assigned a reward $R_i = \mathcal{R}_{\text{hybrid}}(\mathcal{H}_i, \mathcal{T})$. Instead of using a learned value function, GRPO estimates the advantage for each trajectory by standardizing its reward relative to the others in the group:
+\begin{equation}
+\hat{A}_i = \frac{R_i - \text{mean}(\{R_j\}_{j=1}^k)}{\text{std}(\{R_j\}_{j=1}^k) + \epsilon_{\text{std}}}
+\end{equation}
+where $\epsilon_{\text{std}}$ is a small constant for numerical stability. This group-relative advantage $\hat{A}_i$ is applied to every timestep within the trajectory $\mathcal{H}_i$. The policy is then updated by minimizing a clipped surrogate objective, similar to PPO~\citep{schulman2017proximalpolicyoptimizationalgorithms}, which is averaged over all trajectories in the group and all timesteps in each trajectory. The GRPO loss function is:
+\begin{equation}
+\label{eq:grpo_loss}
+\begin{aligned}
+\mathcal{L}_{\text{GRPO}}(\theta) = -\mathbb{E}_{\{\mathcal{H}_i\}_{i=1}^k \sim \pi_{\theta}} \Bigg[ \frac{1}{k} \sum_{i=1}^{k} \frac{1}{|\mathcal{H}_i|} \sum_{t=1}^{|\mathcal{H}_i|} \Bigg( \min \bigg( r_{i,t}(\theta) \hat{A}_i,
+\text{clip} \big( r_{i,t}(\theta), 1-\varepsilon, 1+\varepsilon \big) \hat{A}_i \bigg) \Bigg) \Bigg]
+\end{aligned}
+\end{equation}
+where $r_{i,t}(\theta) = \frac{\pi_{\theta}(a_{i,t} \mid s_{i,t})}{\pi_{\text{old}}(a_{i,t} \mid s_{i,t})}$ is the importance sampling ratio at timestep $t$ of trajectory $i$, and $\varepsilon$ is the clipping hyperparameter. By optimizing this loss, the policy $\pi_\theta$ learns to favor actions that lead to trajectories with higher-than-average rewards within a sampled group, effectively internalizing the complex preferences defined by our $\mathcal{R}_{\text{hybrid}}$ function.
+
+% \begin{wraptable}{l}{0.7\linewidth}
+% \small
+% \centering
+% \caption{data statistics.}
+% \begin{adjustbox}{width=1.0\linewidth}
+% \centering
+% \label{tab:acebench_zh}
+%  %\renewcommand\arraystretch{1.2} % row space
+% \begin{tabular}{l|cccc}
+% \toprule
+% {\textbf{Source}} & \textbf{\#Data} & \textbf{Avg. \#Table} & \textbf{Avg. \#Action} & \textbf{Avg. Traj Len}\\
+% \midrule
+% % 这里填你的数据，例如：
+% Basic-v1 &  &  &  &  \\
+% Union-v2 &  &  &  &  \\
+% Reverse-Union-v3 &  &  &  &  \\
+% \bottomrule
+% \end{tabular}
+% \end{adjustbox}
+% \end{wraptable}

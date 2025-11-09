@@ -1,0 +1,16 @@
+{
+  "name": "webleaper-presentation",
+  "version": "1.0.0",
+  "description": "WebLeaper presentation with overflow detection tools",
+  "scripts": {
+    "detect-overflow": "node ../reveal-presentation-core/tools/overflow-detector/detect-overflow.js",
+    "check-overflow": "npm run detect-overflow",
+    "auto-fix-overflow": "node ../reveal-presentation-core/tools/overflow-detector/auto-fix.js"
+  },
+  "dependencies": {
+    "puppeteer": "^22.0.0"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "MIT"
+}

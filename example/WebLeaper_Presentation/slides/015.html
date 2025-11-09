@@ -1,0 +1,39 @@
+            <section class="ultra-dense-slide">
+                <h2>强化学习：混合奖励系统（2/2）</h2>
+
+                <h3>解决方案：软 F-Score (Soft F-Score)</h3>
+
+                <div class="two-columns" style="gap: 20px;">
+                    <div>
+                        <p><strong>1. 语义相似度函数</strong></p>
+                        <div class="formula-box" style="padding: 10px; margin: 8px 0; font-size: 0.8em;">
+                            \[s(e_o, e_r) \in [0, 1]\]
+                        </div>
+                        <p style="font-size: 0.9em; margin-top: 8px;">理解同义词和语义等价</p>
+
+                        <p style="margin-top: 20px;"><strong>2. 软召回率</strong></p>
+                        <div class="formula-box" style="padding: 10px; margin: 8px 0; font-size: 0.8em;">
+                            \[\mathcal{R}_c = \frac{1}{|R|} \sum_{e_r \in R} \max_{e_o \in O} s(e_o, e_r)\]
+                        </div>
+                        <p style="font-size: 0.9em; margin-top: 8px;">找到了多少目标实体</p>
+                    </div>
+
+                    <div>
+                        <p><strong>3. 软精确率</strong></p>
+                        <div class="formula-box" style="padding: 10px; margin: 8px 0; font-size: 0.8em;">
+                            \[\mathcal{P} = \frac{1}{|O|} \sum_{e_o \in O} \max_{e_r \in R} s(e_o, e_r)\]
+                        </div>
+                        <p style="font-size: 0.9em; margin-top: 8px;">找到的实体有多准确</p>
+
+                        <p style="margin-top: 20px;"><strong>4. WebLeaper 最终奖励</strong></p>
+                        <div class="formula-box" style="padding: 10px; margin: 8px 0; font-size: 0.8em;">
+                            \[\mathcal{R}_{\omega} = (1 + \omega^2) \frac{\mathcal{P} \cdot \mathcal{R}_c}{\omega^2 \mathcal{P} + \mathcal{R}_c}\]
+                        </div>
+                        <p style="font-size: 0.9em; margin-top: 8px;">平衡精确率和召回率</p>
+                    </div>
+                </div>
+
+                <div class="insight-box" style="margin-top: 20px;">
+                    <strong>优势：</strong>细粒度反馈 + 智能评估 + 兼容性（保留传统数据集的评估方式）
+                </div>
+            </section>

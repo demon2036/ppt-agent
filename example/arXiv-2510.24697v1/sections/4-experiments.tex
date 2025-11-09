@@ -1,0 +1,172 @@
+% \vspace{-0.5em}
+\section{Experiments}
+\label{sec:Evaluation}
+% \vspace{-0.5em}
+
+
+
+\subsection{Setup}
+\label{sec:Setup}
+
+
+\paragraph{Benchmarks} We conduct extensive evaluations of our method on five challenging QA benchmarks that demand complex information-seeking capabilities, namely BrowseComp~\citep{bc_en}, GAIA~\citep{mialon2023gaia}, xbench-DeepSearch (xbench-DS)~\citep{xbench}, Seal-0~\citep{pham2025sealqa}, and WideSearch~\citep{wong2025widesearch}. For GAIA, we adopt the 103-sample text-only validation subset~\citep{Li2025webthinker}, while for all other benchmarks, we utilize their complete test sets.
+
+% \vspace{-1em}
+
+\begin{table}
+\small
+\centering
+\caption{Ablation study on training results across different data sources (for efficiency considerations, we use the \texttt{WideSearch} (English subset) and \texttt{BrowseComp} (200 subset), while the full sets are used for the other benchmarks). Numbers in parentheses denote the difference compared to training only with the \texttt{WebSailor-V2-5k} data. $\dag$ denotes a mixed version that includes the \texttt{WebSailor-V2-5k} data.}
+\label{tab:task_ablation}
+\resizebox{\linewidth}{!}{
+\begin{tabular}{lcccccc}
+\toprule
+{\textbf{Data Source}} & \textbf{BrowseComp} & \textbf{WideSearch} & \textbf{GAIA} & \textbf{Seal-0} & \textbf{xbench-DS} & \textbf{Avg.} \\
+\midrule
+\texttt{WebSailor-V2-5k} & 25.17 & 33.15 & 67.69 & 34.23 & 60.00 & 44.05 \\
+\texttt{WebSailor-V2-10k} & 24.50 & 38.91 & 66.02 & 33.93 & 62.67 & 45.21 \\
+\midrule
+\texttt{Basic-5k}$^\dag$
+  & 20.67 \,(\textcolor{red!70!black}{-4.50}) 
+  & 32.26 \,(\textcolor{red!70!black}{-0.89}) 
+  & 40.78 \,(\textcolor{red!70!black}{-26.91}) & 30.03 \,(\textcolor{red!70!black}{-4.20}) & 58.33 \,(\textcolor{red!70!black}{-1.67}) & 36.41 \,(\textcolor{red!70!black}{-7.64}) \\
+\texttt{Union-5k}$^\dag$
+  & 27.50 \,(\textcolor{green!60!black}{+2.33}) 
+  & 41.70 \,(\textcolor{green!60!black}{+8.55}) 
+  & 69.90 \,(\textcolor{green!60!black}{+2.21}) & 35.14 \,(\textcolor{green!60!black}{+0.82}) & 62.33 \,(\textcolor{green!60!black}{+2.33}) & 47.31 \,(\textcolor{green!60!black}{+3.26}) \\
+\texttt{Reverse-Union-10k}$^\dag$
+  & 27.67 \,(\textcolor{green!60!black}{+2.50}) & 44.07 \,(\textcolor{green!60!black}{+10.92}) & 66.99 (\textcolor{red!70!black}{-0.70}) & 37.24 \,(\textcolor{green!60!black}{+3.01}) & 66.00 \,(\textcolor{green!60!black}{+6.00}) & 48.39 \,(\textcolor{green!60!black}{+4.34}) \\
+\bottomrule
+\end{tabular}
+}
+\vspace{-1em}
+\end{table}
+
+\paragraph{Baselines} 
+We select a representative set of mainstream and competitive information-seeking agents as our baselines, including proprietary agents (\texttt{Claude-4-Sonnet}~\citep{claude4}, \texttt{OpenAI-o3}~\citep{o3}, \texttt{OpenAI DeepResearch}~\citep{openaidr}) and open-source agents (\texttt{ASearcher}~\citep{asearcher}, \texttt{DeepDive}~\citep{lu2025deepdive}, \texttt{DeepDiver-V2}~\citep{deepdiver-v2}, \texttt{MiroThinker}~\citep{miromind2025mirothinker}, \texttt{Kimi-K2}~\citep{kimi-k2}, \texttt{WebExplorer}~\citep{liu2025webexplorer}, \texttt{WebDancer}~\citep{wu2025webdancerautonomousinformationseeking}, \texttt{WebSailor}~\citep{li2025websailornavigatingsuperhumanreasoning}, \texttt{WebShaper}~\citep{tao2025webshaper}).
+
+% \vspace{-1em}
+
+\paragraph{Training Configurations} 
+To maintain the basic deep search ability, we combine our data with 5,000 \texttt{WebSailor-V2}~\citep{li2025websailorv2bridgingchasmproprietary} data to train the model. We separately merge 5,000 \texttt{WebSailor-V2} data with \texttt{Basic}, \texttt{Union}, and \texttt{Reverse-Union} data of \w, which stimulates the IS ability to a larger degree  (with $\alpha$ in ISR set to 0.3 and $\beta$ in ISE set to 0.1). We employ \texttt{Qwen3-30B-A3B-Thinking-2507}\footnote{\url{https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507}} as the base model, trained using the \texttt{Megatron} framework\footnote{\url{https://github.com/NVIDIA/Megatron-LM}}. This is our default base setting in which most experiments are conducted.
+
+\paragraph{Comprehensive and Realistic Settings}
+
+To more rigorously evaluate whether the training data of \w~can remain effective under more comprehensive and realistic scenarios, we introduce the comprehensive setting. We mix \w~ data into the corpus of \texttt{Tongyi-DeepResearch-30B-A3B}, covering both the supervised fine-tuning and reinforcement learning stages, to examine its overall impact on performance. 
+It is worth noting that this serves only as a supplementary setting applied in certain experimental sections. Unless otherwise specified, we adopt the base \w~ experimental configuration by default.
+
+% \vspace{-1em}
+
+\paragraph{Evaluation Metrics and Inference Hyper-parameters} The overall evaluation follows the settings specified by each benchmark. For BrowseComp, GAIA, xbench-DS, and Seal-0, we report the \texttt{pass@1} scores obtained via LLM-as-a-judge evaluation as the final results. For WideSearch, we report the success rate (\texttt{SR}) for fully retrieving all target results, along with two F1 scores—\texttt{Row F1} and \texttt{Item F1}—which are computed using a combination of string matching and LLM-as-a-judge evaluation, in alignment with the official evaluation protocol. During LLM inference, we configure the sampling parameters (temperature and top‑\textit{p}) to 0.6 and 0.95, respectively.
+
+% \vspace{-1em}
+
+
+
+
+\subsection{Overall Performance}
+\label{sec:main_results}
+
+\noindent\textbf{Base Setting}
+As shown in Table~\ref{tab:main_result}, \texttt{WebLeaper} achieves state-of-the-art performance compared to mainstream open-source agents on five challenging information-seeking QA benchmarks. Notably, on benchmarks other than BrowseComp and WideSearch, it even delivers performance comparable to, or surpassing, that of agents built on \texttt{Claude-4-Sonnet} and \texttt{OpenAI-o3}. Even on the highly challenging BrowseComp benchmark, \texttt{WebLeaper} significantly outperforms \texttt{Kimi-K2-Instruct-1T}, despite the latter having a much larger parameter scale. It is also worth noting that the \texttt{Reverse-Union} data, which incorporates greater task complexity on top of the \texttt{Union} data, employs an fuzz strategy that further facilitates the model’s ability to integrate information-seeking with planning and reasoning, thereby enhancing its overall information-seeking QA capability.
+
+Overall, the observed performance improvements validate that our proposed approaches—entity-intensive task synthesis and information-guided trajectory construction—significantly enhance the agent’s information-seeking capabilities, even under a modest parameter budget.
+
+\noindent\textbf{Comprehensive Setting}
+We also train our method on the comprehensive setting, and compare it to more competitive methods. The results are shown in Figure~\ref{fig:main_results}. 
+\w~ reaches 73.2 on GAIA, 38.8 on BrowseComp, and 72.0 on xbench-DeepResearch. On the harder WideSearch benchmark, \w~ also attains the highest Success Rate and Item-F1, clearly outperforming all competitors. These results demonstrate that our approach generalizes well and remains effective even when evaluated under the comprehensive and realistic training setting.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/traj_ablation_bar_plot.pdf}
+    \caption{Ablation study results on information-guided trajectory construction strategies.}
+    \label{fig:traj_ablation_bar_plot}
+    \vspace{-1em}
+\end{figure}
+
+\subsection{Capability Gains Induced by Entity-Intensive Task Synthesis}
+
+
+
+
+To investigate the effectiveness of our entity-intensive task synthesis method, we conduct a comparative analysis against training solely on the \texttt{WebSailor-V2} dataset (using 5,000 and 1,000 samples, respectively), a synthetic corpus specifically designed to stimulate the agent’s deep search capability.
+
+As shown in Table~\ref{tab:task_ablation}, we investigate the impact of different entity-intensive task synthesis strategies through an ablation study on all these benchmarks. The \texttt{Basic} setting exhibits substantial drops across all three datasets compared to \texttt{WebSailor-V2-5k}. This poor performance can be attributed to the inherent limitations of the Basic data construction method: tasks generated under this setting tend to be overly simple, allowing the model to infer complete answers from only a few information sources. Such shortcut patterns encourage the model to overfit to superficial cues rather than learning to integrate diverse information, ultimately impairing generalization.
+
+In contrast, the \texttt{Union} strategy consistently outperforms \texttt{WebSailor-V2-5k}, achieving an average improvement of $+3.26$. By combining heterogeneous information sources and increasing the complexity of task construction, \texttt{Union} mitigates the shortcut problem inherent in \texttt{Basic}, forcing the model to reason over dispersed and complementary evidence. This leads to more robust performance across datasets and demonstrates the effectiveness of the proposed data construction approach.
+
+Furthermore, compared to \texttt{Union}, \texttt{Reverse-Union} introduces a certain degree of reasoning complexity into the information-seeking process, making it more challenging for the model to readily identify where to begin entity retrieval. This design particularly enhances the model’s planning and decision-making capabilities in information-seeking tasks. The improvement in these abilities is clearly reflected in performance, leading to substantial and widespread gains across all benchmarks.
+
+\subsection{Impact of Information-Guided Trajectory Construction}
+
+
+
+We compare the proposed information-guided trajectory construction strategies across \texttt{ISR-Only}, \texttt{ISE-Only}, and \texttt{ISR+ISE} on three representative benchmarks—GAIA, BrowseComp, and WideSearch—to examine the independent and combined effects of ISE and ISR.
+
+On GAIA and BrowseComp, \texttt{ISR+ISE} achieves the best performance, suggesting that integrating precision and efficiency constraints produces trajectories that are both goal-directed and concise, thereby reducing redundant exploration. This indicates that in more complex browsing tasks, relevance and efficiency constraints complement each other to generate higher-quality trajectories.
+
+In contrast, on WideSearch, the three strategies deliver comparable results, with performance differences falling within the margin of variance. This suggests that for broad search tasks, the specific choice of trajectory filtering plays a less critical role—likely because training on entity-intensive synthesized data already provides strong broad search capabilities.
+
+\subsection{Joint Gains in Efficiency and Effectiveness}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/tool_call_performance_scatter.pdf}
+    \caption{Effectiveness and efficiency comparison between \w{} and \texttt{WebSailor-V2}.}
+    \label{fig:tool_call_performance_scatter}
+    \vspace{-1em}
+\end{figure}
+
+
+
+As illustrated in Figure~\ref{fig:tool_call_performance_scatter}, \w{} consistently outperforms the baseline in terms of both effectiveness and efficiency. In the WideSearch and BrowseComp benchmarks, our approach achieves markedly higher performance scores while requiring fewer average action rounds, indicating that the search process is not only more accurate but also more efficient. Similarly, in the GAIA and xbench-DS tasks, our method improves effectiveness while simultaneously reducing the operational cost. This demonstrates that our design enables a more targeted search strategy, resulting in reduced interaction steps without sacrificing—and in fact enhancing—the quality of the results. 
+
+Overall, these results validate that our proposed method achieves superior joint optimization of information-seeking efficiency and task performance compared to the baseline. This reflects our key insight: an agent should not merely learn to search, but rather learn to search efficiently and wisely, thereby achieving a better balance between efficiency and effectiveness.
+
+\subsection{Reinforcement Learning using \w{}}
+
+\begin{table*}[h!]
+\tiny
+\centering
+\caption{RL Results on comprehensive setting.
+All benchmarks except WideSearch report Avg \texttt{Pass@1} from 3 rollouts.
+WideSearch reports Success Rate (\texttt{SR}), \texttt{Row F1}, and \texttt{Item F1}.
+}
+\resizebox{\columnwidth}{!}{%
+\setlength{\tabcolsep}{6pt} % 调整列间距
+\renewcommand{\arraystretch}{1.1} % 调整行高
+\begin{tabular}{lcccccc}
+\toprule
+\multirow{2.5}{*}{\textbf{}} 
+& \multirow{2.5}{*}{\textbf{BrowseComp}} 
+& \multirow{2.5}{*}{\textbf{GAIA}} 
+& \multirow{2.5}{*}{\textbf{xbench-DS}} 
+& \multicolumn{3}{c}{\textbf{WideSearch}} \\
+\cmidrule(lr){5-7}
+ & & & & \texttt{SR} & \texttt{Row F1} & \texttt{Item F1} \\
+% \midrule
+% \multicolumn{7}{l}{\textit{RL Fine-tuning Results (135 Steps)}} \\
+\midrule
+\texttt{SFT} & 37.80 & 69.9 & 69.0 & 1.5 & 23.0 & 45.4 \\
+\midrule
+\texttt{SFT+RL} & 38.8 \,(\textcolor{green!60!black}{+1.0}) & 73.2 \,(\textcolor{green!60!black}{+3.3}) & 72.0 \,(\textcolor{green!60!black}{+3.0}) & 4.0 \,(\textcolor{green!60!black}{+2.5}) & 31.0 \,(\textcolor{green!60!black}{+8.0}) & 48.5 \,(\textcolor{green!60!black}{+3.1}) \\
+\bottomrule
+\end{tabular}%
+}
+\label{tab:rl}
+\end{table*}
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/reward_curve_compact.pdf}
+    \caption{Figure shows the training curve of the hybrid reward system, indicating that using the \w{} data leads to a stable increase in reward. We terminated the experiment at 135 steps when web access resources were exhausted and evaluated the results at this point.}
+    \label{fig:reward_curve}
+    \vspace{-1em}
+\end{figure}
+
+We further evaluate our approach through reinforcement learning, adopting the \textit{Additional Settings for More Comprehensive and Realistic Training} (see Section~\ref{sec:Setup}) where \w{} data is mixed into a larger training corpus for both SFT and subsequent RL stages. As demonstrated by the results in Table~\ref{tab:rl} and Figure~\ref{fig:reward_curve}, using \w{} data for RL yields consistent and significant improvements. The results table shows that after RL fine-tuning, the model comprehensively surpasses the SFT-only baseline across all benchmarks. 
+
+This positive performance trend is echoed by the reward curve in Figure~\ref{fig:reward_curve}, which exhibits a stable and continuous upward trajectory throughout the training process. This indicates that the model is effectively learning from the reward signals derived from the \w{} data, progressively refining its information-seeking strategy towards greater efficiency and accuracy. Even with the experiment concluding at 135 steps, the clear learning trend underscores the potential for further gains.
+
+The results strongly validate the effectiveness of the \w{} dataset. It not only serves as a robust foundation for supervised fine-tuning but also provides a high-quality signal for RL, successfully guiding the agent to master more sophisticated and optimal information-seeking behaviors.

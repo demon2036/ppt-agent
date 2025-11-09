@@ -1,0 +1,245 @@
+\begin{thebibliography}{46}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Anthropic(2025)]{claude4}
+Anthropic.
+\newblock Introducing claude 4, 2025.
+\newblock URL \url{https://www.anthropic.com/news/claude-4}.
+
+\bibitem[Fang et~al.(2025{\natexlab{a}})Fang, Cai, Li, Wu, Li, Yin, Wang, Wang, Su, Zhang, Wu, Tao, Jiang, Xie, Huang, and Zhou]{fang2025generalagenticintelligenceenvironment}
+Runnan Fang, Shihao Cai, Baixuan Li, Jialong Wu, Guangyu Li, Wenbiao Yin, Xinyu Wang, Xiaobin Wang, Liangcai Su, Zhen Zhang, Shibin Wu, Zhengwei Tao, Yong Jiang, Pengjun Xie, Fei Huang, and Jingren Zhou.
+\newblock Towards general agentic intelligence via environment scaling, 2025{\natexlab{a}}.
+\newblock URL \url{https://arxiv.org/abs/2509.13311}.
+
+\bibitem[Fang et~al.(2025{\natexlab{b}})Fang, Cai, Li, Wu, Li, Yin, Wang, Wang, Su, Zhang, et~al.]{fang2025towards}
+Runnan Fang, Shihao Cai, Baixuan Li, Jialong Wu, Guangyu Li, Wenbiao Yin, Xinyu Wang, Xiaobin Wang, Liangcai Su, Zhen Zhang, et~al.
+\newblock Towards general agentic intelligence via environment scaling.
+\newblock \emph{arXiv preprint arXiv:2509.13311}, 2025{\natexlab{b}}.
+
+\bibitem[Gao et~al.(2025)Gao, Fu, Xie, Xu, He, Mei, Zhu, and Wu]{asearcher}
+Jiaxuan Gao, Wei Fu, Minyang Xie, Shusheng Xu, Chuyi He, Zhiyu Mei, Banghua Zhu, and Yi~Wu.
+\newblock Beyond ten turns: Unlocking long-horizon agentic search with large-scale asynchronous rl.
+\newblock \emph{arXiv preprint arXiv:2508.07976}, 2025.
+
+\bibitem[Gemini(2025)]{geminidr}
+Gemini.
+\newblock Gemini deep research, 2025.
+\newblock URL \url{https://gemini.google.com/app}.
+
+\bibitem[Guo et~al.(2024)Guo, Chen, Wang, Chang, Pei, Chawla, Wiest, and Zhang]{guo2024large}
+Taicheng Guo, Xiuying Chen, Yaqi Wang, Ruidi Chang, Shichao Pei, Nitesh~V Chawla, Olaf Wiest, and Xiangliang Zhang.
+\newblock Large language model based multi-agents: A survey of progress and challenges.
+\newblock \emph{arXiv preprint arXiv:2402.01680}, 2024.
+
+\bibitem[Hong et~al.(2024)Hong, Zhuge, Chen, Zheng, Cheng, Wang, Zhang, Wang, Yau, Lin, et~al.]{hong2023metagpt}
+Sirui Hong, Mingchen Zhuge, Jonathan Chen, Xiawu Zheng, Yuheng Cheng, Jinlin Wang, Ceyao Zhang, Zili Wang, Steven Ka~Shing Yau, Zijuan Lin, et~al.
+\newblock {MetaGPT}: Meta programming for a multi-agent collaborative framework.
+\newblock In \emph{The Twelfth International Conference on Learning Representations}, 2024.
+\newblock URL \url{https://openreview.net/forum?id=VtmBAGCN7o}.
+
+\bibitem[Jimenez et~al.(2024)Jimenez, Yang, Wettig, Yao, Pei, Press, and Narasimhan]{jimenez2024swebench}
+Carlos~E. Jimenez, John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir Press, and Karthik~R. Narasimhan.
+\newblock {SWE-bench}: Can language models resolve real-world github issues?
+\newblock In \emph{The Twelfth International Conference on Learning Representations}, 2024.
+\newblock URL \url{https://openreview.net/forum?id=VTF8yNQM66}.
+
+\bibitem[Li et~al.(2025{\natexlab{a}})Li, Fan, Ma, Gao, Shi, and Gao]{li2025raspberry}
+Baixuan Li, Yunlong Fan, Tianyi Ma, Miao Gao, Chuanqi Shi, and Zhiqiang Gao.
+\newblock Raspberry: Retrieval-augmented monte carlo tree self-play with reasoning consistency for multi-hop question answering.
+\newblock In \emph{Findings of the Association for Computational Linguistics: ACL 2025}, pp.\  11258--11276, 2025{\natexlab{a}}.
+
+\bibitem[Li et~al.(2025{\natexlab{b}})Li, Zhang, Yin, Ye, Zhao, Zhang, Ou, Zhang, Wu, Wu, Wang, Qiao, Zhang, Jiang, Xie, Huang, and Zhou]{li2025websailorv2bridgingchasmproprietary}
+Kuan Li, Zhongwang Zhang, Huifeng Yin, Rui Ye, Yida Zhao, Liwen Zhang, Litu Ou, Dingchu Zhang, Xixi Wu, Jialong Wu, Xinyu Wang, Zile Qiao, Zhen Zhang, Yong Jiang, Pengjun Xie, Fei Huang, and Jingren Zhou.
+\newblock Websailor-v2: Bridging the chasm to proprietary agents via synthetic data and scalable reinforcement learning, 2025{\natexlab{b}}.
+\newblock URL \url{https://arxiv.org/abs/2509.13305}.
+
+\bibitem[Li et~al.(2025{\natexlab{c}})Li, Zhang, Yin, Zhang, Ou, Wu, Yin, Li, Tao, Wang, Shen, Zhang, Zhang, Wu, Jiang, Yan, Xie, Huang, and Zhou]{li2025websailornavigatingsuperhumanreasoning}
+Kuan Li, Zhongwang Zhang, Huifeng Yin, Liwen Zhang, Litu Ou, Jialong Wu, Wenbiao Yin, Baixuan Li, Zhengwei Tao, Xinyu Wang, Weizhou Shen, Junkai Zhang, Dingchu Zhang, Xixi Wu, Yong Jiang, Ming Yan, Pengjun Xie, Fei Huang, and Jingren Zhou.
+\newblock Websailor: Navigating super-human reasoning for web agent, 2025{\natexlab{c}}.
+\newblock URL \url{https://arxiv.org/abs/2507.02592}.
+
+\bibitem[Li et~al.(2025{\natexlab{d}})Li, Jin, Dong, Qian, Zhu, Wu, Wen, and Dou]{Li2025webthinker}
+Xiaoxi Li, Jiajie Jin, Guanting Dong, Hongjin Qian, Yutao Zhu, Yongkang Wu, Ji{-}Rong Wen, and Zhicheng Dou.
+\newblock Webthinker: Empowering large reasoning models with deep research capability.
+\newblock \emph{CoRR}, abs/2504.21776, 2025{\natexlab{d}}.
+\newblock \doi{10.48550/ARXIV.2504.21776}.
+\newblock URL \url{https://doi.org/10.48550/arXiv.2504.21776}.
+
+\bibitem[Liu et~al.(2025)Liu, Li, Zhang, Li, Chen, Ji, Cheng, Wu, Du, Xu, et~al.]{liu2025webexplorer}
+Junteng Liu, Yunji Li, Chi Zhang, Jingyang Li, Aili Chen, Ke~Ji, Weiyu Cheng, Zijia Wu, Chengyu Du, Qidi Xu, et~al.
+\newblock Webexplorer: Explore and evolve for training long-horizon web agents.
+\newblock \emph{arXiv preprint arXiv:2509.06501}, 2025.
+
+\bibitem[Lu et~al.(2025)Lu, Hou, Wang, Zhang, Liu, Li, Feng, Tang, and Dong]{lu2025deepdive}
+Rui Lu, Zhenyu Hou, Zihan Wang, Hanchen Zhang, Xiao Liu, Yujiang Li, Shi Feng, Jie Tang, and Yuxiao Dong.
+\newblock Deepdive: Advancing deep search agents with knowledge graphs and multi-turn rl.
+\newblock \emph{arXiv preprint arXiv:2509.10446}, 2025.
+
+\bibitem[Mialon et~al.(2023)Mialon, Fourrier, Wolf, LeCun, and Scialom]{mialon2023gaia}
+Gr{\'e}goire Mialon, Cl{\'e}mentine Fourrier, Thomas Wolf, Yann LeCun, and Thomas Scialom.
+\newblock Gaia: a benchmark for general ai assistants.
+\newblock In \emph{The Twelfth International Conference on Learning Representations}, 2023.
+
+\bibitem[OpenAI(2025{\natexlab{a}})]{o3}
+OpenAI.
+\newblock Introducing openai o3 and o4-mini, 2025{\natexlab{a}}.
+\newblock URL \url{https://openai.com/index/introducing-o3-and-o4-mini/}.
+
+\bibitem[OpenAI(2025{\natexlab{b}})]{openaidr}
+OpenAI.
+\newblock Deep research system card, 2025{\natexlab{b}}.
+\newblock URL \url{https://cdn.openai.com/deep-research-system-card.pdf}.
+
+\bibitem[Pahuja et~al.(2025)Pahuja, Chang, Lee, Mordatch, and Levine]{pahuja2025explorer}
+Vardaan Pahuja, Michael Chang, Hong-Lak Lee, Igor Mordatch, and Sergey Levine.
+\newblock {Explorer}: Scaling exploration-driven web trajectory synthesis for multimodal web agents, 2025.
+
+\bibitem[Perplexity(2025)]{perplexity}
+Perplexity.
+\newblock Perplexity deep research, 2025.
+\newblock URL \url{https://www.perplexity.ai/}.
+
+\bibitem[Pham et~al.(2025)Pham, Nguyen, Zunjare, Chen, Tseng, and Vu]{pham2025sealqa}
+Thinh Pham, Nguyen Nguyen, Pratibha Zunjare, Weiyuan Chen, Yu-Min Tseng, and Tu~Vu.
+\newblock Sealqa: Raising the bar for reasoning in search-augmented language models.
+\newblock \emph{arXiv preprint arXiv:2506.01062}, 2025.
+
+\bibitem[Qiao et~al.(2025)Qiao, Huang, Wu, Li, Yin, Wang, Zhang, Li, Tao, Shen, Wu, Jiang, Xie, Huang, Zhang, and Zhou]{qiao2025webresearcher}
+Zile Qiao, Shen Huang, Jialong Wu, Kuan Li, Wenbiao Yin, Xinyu Wang, Liwen Zhang, Baixuan Li, Zhengwei Tao, Weizhou Shen, Xixi Wu, Yong Jiang, Pengjun Xie, Fei Huang, Jun Zhang, and Jingren Zhou.
+\newblock {WebResearcher}: Unleashing unbounded reasoning capability in long-horizon agents, 2025.
+
+\bibitem[Schulman et~al.(2017)Schulman, Wolski, Dhariwal, Radford, and Klimov]{schulman2017proximalpolicyoptimizationalgorithms}
+John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
+\newblock Proximal policy optimization algorithms, 2017.
+\newblock URL \url{https://arxiv.org/abs/1707.06347}.
+
+\bibitem[Shao et~al.(2025)Shao, Gong, Shen, Jiao, Jia, Yang, Duan, and Chen]{shao2025case2code}
+Zheng-Xin Shao, Yeyun Gong, Yelong Shen, Jian Jiao, Ruoss Jia, Yujiu Yang, Nan Duan, and Weizhu Chen.
+\newblock {Case2Code}: Scalable synthetic data for code generation.
+\newblock In \emph{Proceedings of the 31st International Conference on Computational Linguistics}. Association for Computational Linguistics, 2025.
+
+\bibitem[Shao et~al.(2024)Shao, Wang, Zhu, Xu, Song, Bi, Zhang, Zhang, Li, Wu, and Guo]{shao2024deepseekmathpushinglimitsmathematical}
+Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, Y.~K. Li, Y.~Wu, and Daya Guo.
+\newblock Deepseekmath: Pushing the limits of mathematical reasoning in open language models, 2024.
+\newblock URL \url{https://arxiv.org/abs/2402.03300}.
+
+\bibitem[SHEN et~al.(2025)SHEN, Li, Meng, Cai, Qi, Zhang, Xu, and Ma]{shen2025shortcutsbench}
+Haiyang SHEN, Yue Li, Desong Meng, Dongqi Cai, Sheng Qi, Li~Zhang, Mengwei Xu, and Yun Ma.
+\newblock Shortcutsbench: A large-scale real-world benchmark for {API}-based agents.
+\newblock In \emph{The Thirteenth International Conference on Learning Representations}, 2025.
+\newblock URL \url{https://openreview.net/forum?id=kKILfPkhSz}.
+
+\bibitem[Shen et~al.(2025)Shen, Yan, Xing, Liu, Li, Chen, Wang, Wang, and Ma]{shen2025ragsynthsyntheticdatarobust}
+Haiyang Shen, Hang Yan, Zhongshi Xing, Mugeng Liu, Yue Li, Zhiyang Chen, Yuxiang Wang, Jiuzheng Wang, and Yun Ma.
+\newblock Ragsynth: Synthetic data for robust and faithful rag component optimization, 2025.
+\newblock URL \url{https://arxiv.org/abs/2505.10989}.
+
+\bibitem[Su et~al.(2025)Su, Zhang, Li, Chen, Wang, Song, Wang, Li, Wu, Chen, Qiao, Zhang, Yin, Cai, Fang, Tao, Yin, Qian, Jiang, Xie, Huang, and Zhou]{su2025scalingagentscontinualpretraining}
+Liangcai Su, Zhen Zhang, Guangyu Li, Zhuo Chen, Chenxi Wang, Maojia Song, Xinyu Wang, Kuan Li, Jialong Wu, Xuanzhong Chen, Zile Qiao, Zhongwang Zhang, Huifeng Yin, Shihao Cai, Runnan Fang, Zhengwei Tao, Wenbiao Yin, Chenxiong Qian, Yong Jiang, Pengjun Xie, Fei Huang, and Jingren Zhou.
+\newblock Scaling agents via continual pre-training, 2025.
+\newblock URL \url{https://arxiv.org/abs/2509.13310}.
+
+\bibitem[Sun et~al.(2025)Sun, Cheng, Ding, Jin, Wang, Xu, Wu, Jia, Chen, Liu, Kao, Li, He, Qiao, and Wu]{sun-etal-2025-os}
+Qiushi Sun, Kanzhi Cheng, Zichen Ding, Chuanyang Jin, Yian Wang, Fangzhi Xu, Zhenyu Wu, Chengyou Jia, Liheng Chen, Zhoumianze Liu, Ben Kao, Guohao Li, Junxian He, Yu~Qiao, and Zhiyong Wu.
+\newblock {OS}-genesis: Automating {GUI} agent trajectory construction via reverse task synthesis.
+\newblock In Wanxiang Che, Joyce Nabende, Ekaterina Shutova, and Mohammad~Taher Pilehvar (eds.), \emph{Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pp.\  5555--5579, Vienna, Austria, July 2025. Association for Computational Linguistics.
+\newblock ISBN 979-8-89176-251-0.
+\newblock \doi{10.18653/v1/2025.acl-long.277}.
+\newblock URL \url{https://aclanthology.org/2025.acl-long.277/}.
+
+\bibitem[Tao et~al.(2025)Tao, Wu, Yin, Zhang, Li, Shen, Li, Zhang, Wang, Jiang, Xie, Huang, and Zhou]{tao2025webshaper}
+Zhengwei Tao, Jialong Wu, Wenbiao Yin, Junkai Zhang, Baixuan Li, Haiyang Shen, Kuan Li, Liwen Zhang, Xinyu Wang, Yong Jiang, Pengjun Xie, Fei Huang, and Jingren Zhou.
+\newblock {WebShaper}: Agentically data synthesizing via information-seeking formalization, 2025.
+
+\bibitem[Team(2025)]{kimi_researcher}
+Kimi Team.
+\newblock Kimi researcher tech report, 2025.
+\newblock URL \url{https://moonshotai.github.io/Kimi-Researcher/}.
+
+\bibitem[Team et~al.(2025{\natexlab{a}})Team, Bai, Bao, Chen, Chen, Chen, Chen, Chen, Chen, Chen, et~al.]{kimi-k2}
+Kimi Team, Yifan Bai, Yiping Bao, Guanduo Chen, Jiahao Chen, Ningxin Chen, Ruijue Chen, Yanru Chen, Yuankun Chen, Yutian Chen, et~al.
+\newblock Kimi k2: Open agentic intelligence.
+\newblock \emph{arXiv preprint arXiv:2507.20534}, 2025{\natexlab{a}}.
+
+\bibitem[Team et~al.(2025{\natexlab{b}})]{miromind2025mirothinker}
+MiroMind~AI Team et~al.
+\newblock Mirothinker: An open-source agentic model series trained for deep research and complex, long-horizon problem solving, 2025{\natexlab{b}}.
+
+\bibitem[Team()]{deepdiver-v2}
+OpenPangu Team.
+\newblock Openpangu deepdiver-v2: Multi-agent learning for deep information seeking, 2025b.
+\newblock \emph{URL https://ai. gitcode. com/ascend-tribe/openPangu-Embedded-7B-DeepDiver}.
+
+\bibitem[Wei et~al.(2025)Wei, Sun, Papay, McKinney, Han, Fulford, Chung, Passos, Fedus, and Glaese]{bc_en}
+Jason Wei, Zhiqing Sun, Spencer Papay, Scott McKinney, Jeffrey Han, Isa Fulford, Hyung~Won Chung, Alex~Tachard Passos, William Fedus, and Amelia Glaese.
+\newblock Browsecomp: A simple yet challenging benchmark for browsing agents.
+\newblock \emph{arXiv preprint arXiv:2504.12516}, 2025.
+
+\bibitem[Wong et~al.(2025)Wong, Wang, Zhao, Chen, Gao, Zhang, Zhou, Wang, Xiang, Zhang, et~al.]{wong2025widesearch}
+Ryan Wong, Jiawei Wang, Junjie Zhao, Li~Chen, Yan Gao, Long Zhang, Xuan Zhou, Zuo Wang, Kai Xiang, Ge~Zhang, et~al.
+\newblock Widesearch: Benchmarking agentic broad info-seeking.
+\newblock \emph{arXiv preprint arXiv:2508.07999}, 2025.
+
+\bibitem[Wu et~al.(2025{\natexlab{a}})Wu, Li, Fang, Yin, Zhang, Tao, Zhang, Xi, Fu, Jiang, Xie, Huang, and Zhou]{wu2025webdancerautonomousinformationseeking}
+Jialong Wu, Baixuan Li, Runnan Fang, Wenbiao Yin, Liwen Zhang, Zhengwei Tao, Dingchu Zhang, Zekun Xi, Gang Fu, Yong Jiang, Pengjun Xie, Fei Huang, and Jingren Zhou.
+\newblock Webdancer: Towards autonomous information seeking agency, 2025{\natexlab{a}}.
+\newblock URL \url{https://arxiv.org/abs/2505.22648}.
+
+\bibitem[Wu et~al.(2025{\natexlab{b}})Wu, Yin, Jiang, Wang, Xi, Fang, Zhang, He, Zhou, Xie, and Huang]{wu-etal-2025-webwalker}
+Jialong Wu, Wenbiao Yin, Yong Jiang, Zhenglin Wang, Zekun Xi, Runnan Fang, Linhai Zhang, Yulan He, Deyu Zhou, Pengjun Xie, and Fei Huang.
+\newblock {W}eb{W}alker: Benchmarking {LLM}s in web traversal.
+\newblock In Wanxiang Che, Joyce Nabende, Ekaterina Shutova, and Mohammad~Taher Pilehvar (eds.), \emph{Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pp.\  10290--10305, Vienna, Austria, July 2025{\natexlab{b}}. Association for Computational Linguistics.
+\newblock ISBN 979-8-89176-251-0.
+\newblock \doi{10.18653/v1/2025.acl-long.508}.
+\newblock URL \url{https://aclanthology.org/2025.acl-long.508/}.
+
+\bibitem[Wu et~al.(2023)Wu, Bansal, Zhang, Wu, Li, Zhu, Jiang, Zhang, Zhang, Liu, et~al.]{wu2023autogen}
+Qingyun Wu, Gagan Bansal, Jieyu Zhang, Yiran Wu, Beibin Li, Erkang Zhu, Li~Jiang, Xiaoyun Zhang, Shaokun Zhang, Jiale Liu, et~al.
+\newblock Autogen: Enabling next-gen llm applications via multi-agent conversation.
+\newblock \emph{arXiv preprint arXiv:2308.08155}, 2023.
+
+\bibitem[Xbench-Team(2025)]{xbench}
+Xbench-Team.
+\newblock Xbench-deepsearch, 2025.
+\newblock URL \url{https://xbench.org/agi/aisearch}.
+
+\bibitem[Xu et~al.(2025{\natexlab{a}})Xu, Mei, Gao, Tan, Liang, and Zhang]{xu2025amemagenticmemoryllm}
+Wujiang Xu, Kai Mei, Hang Gao, Juntao Tan, Zujie Liang, and Yongfeng Zhang.
+\newblock A-mem: Agentic memory for llm agents, 2025{\natexlab{a}}.
+\newblock URL \url{https://arxiv.org/abs/2502.12110}.
+
+\bibitem[Xu et~al.(2025{\natexlab{b}})Xu, Lu, Shen, Wang, Wang, Mao, Xiong, and Yu]{xu2025agenttrek}
+Yiheng Xu, Dunjie Lu, Zhennan Shen, Junli Wang, Zekun Wang, Yuchen Mao, Caiming Xiong, and Tao Yu.
+\newblock {AgentTrek}: Agent trajectory synthesis via guiding replay with web tutorials.
+\newblock In \emph{International Conference on Learning Representations}, 2025{\natexlab{b}}.
+
+\bibitem[Xu et~al.(2025{\natexlab{c}})Xu, Liu, Yin, Zhou, and Poovendran]{xu2025kodcode}
+Zhangchen Xu, Yang Liu, Yueqin Yin, Mingyuan Zhou, and Radha Poovendran.
+\newblock {KodCode}: A diverse, challenging, and verifiable synthetic dataset for coding, 2025{\natexlab{c}}.
+
+\bibitem[Xue et~al.(2025)Xue, Zheng, Liu, Li, Zheng, Ma, and An]{xue2025simpletir}
+Zhenghai Xue, Longtao Zheng, Qian Liu, Yingru Li, Xiaosen Zheng, Zejun Ma, and Bo~An.
+\newblock Simpletir: End-to-end reinforcement learning for multi-turn tool-integrated reasoning.
+\newblock \emph{arXiv preprint arXiv:2509.02479}, 2025.
+
+\bibitem[Yao et~al.(2023)Yao, Zhao, Yu, Du, Shafran, Narasimhan, and Cao]{yao2023react}
+Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, and Yuan Cao.
+\newblock React: Synergizing reasoning and acting in language models.
+\newblock In \emph{International Conference on Learning Representations (ICLR)}, 2023.
+
+\bibitem[Ye et~al.(2023)Ye, Xu, Xu, Ye, Yan, Zhou, Wang, Hu, Shi, Shi, et~al.]{mplug-owl}
+Qinghao Ye, Haiyang Xu, Guohai Xu, Jiabo Ye, Ming Yan, Yiyang Zhou, Junyang Wang, Anwen Hu, Pengcheng Shi, Yaya Shi, et~al.
+\newblock {mPLUG-Owl}: Modularization empowers large language models with multimodality.
+\newblock \emph{CoRR}, abs/2304.14178, 2023.
+
+\bibitem[Zeng et~al.(2023)Zeng, Liu, Lu, Wang, Liu, Dong, and Tang]{zeng2023agenttuning}
+Aohan Zeng, Mingdao Liu, Rui Lu, Bowen Wang, Xiao Liu, Yuxiao Dong, and Jie Tang.
+\newblock {AgentTuning}: Enabling generalized agent abilities for {LLMs}.
+\newblock \emph{arXiv preprint arXiv:2310.12823}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2310.12823}.
+
+\end{thebibliography}

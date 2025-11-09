@@ -1,0 +1,89 @@
+            <section>
+                <h2>深入分析 (1)：为何 Reverse-Union 效果最好？</h2>
+
+                <table style="font-size: 0.8em;">
+                    <tr>
+                        <th>Data Source</th>
+                        <th>BrowseComp</th>
+                        <th>WideSearch</th>
+                        <th>GAIA</th>
+                        <th>Seal-0</th>
+                        <th>xbench-DS</th>
+                        <th>Avg.</th>
+                    </tr>
+                    <tr>
+                        <td>WebSailor-V2-5k</td>
+                        <td>25.17</td>
+                        <td>33.15</td>
+                        <td>67.69</td>
+                        <td>34.23</td>
+                        <td>60.00</td>
+                        <td>44.05</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Basic-5k</strong></td>
+                        <td style="color: var(--color-warning-red);">20.67 (−4.50)</td>
+                        <td style="color: var(--color-warning-red);">32.26 (−0.89)</td>
+                        <td style="color: var(--color-warning-red);">40.78 (−26.91)</td>
+                        <td style="color: var(--color-warning-red);">30.03 (−4.20)</td>
+                        <td style="color: var(--color-warning-red);">58.33 (−1.67)</td>
+                        <td style="color: var(--color-warning-red);">36.41 (−7.64)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Union-5k</strong></td>
+                        <td style="color: var(--color-success-green);">27.50 (+2.33)</td>
+                        <td style="color: var(--color-success-green);">41.70 (+8.55)</td>
+                        <td style="color: var(--color-success-green);">69.90 (+2.21)</td>
+                        <td style="color: var(--color-success-green);">35.14 (+0.82)</td>
+                        <td style="color: var(--color-success-green);">62.33 (+2.33)</td>
+                        <td class="best">47.31 (+3.26)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reverse-Union-10k</strong></td>
+                        <td style="color: var(--color-success-green);">27.67 (+2.50)</td>
+                        <td style="color: var(--color-success-green);">44.07 (+10.92)</td>
+                        <td style="color: var(--color-warning-red);">66.99 (−0.70)</td>
+                        <td style="color: var(--color-success-green);">37.24 (+3.01)</td>
+                        <td style="color: var(--color-success-green);">66.00 (+6.00)</td>
+                        <td class="best">48.39 (+4.34)</td>
+                    </tr>
+                </table>
+
+                <div class="two-columns" style="margin-top: 20px;">
+                    <div>
+                        <h3>1. Basic 版本的问题</h3>
+                        <ul>
+                            <li><span class="crossmark">✗</span> 性能反而下降，尤其在 GAIA 上（−26.91）</li>
+                            <li><strong>原因：</strong>任务过于简单，模型学会了"抄近道"</li>
+                            <li><strong>后果：</strong>过拟合简单模式，泛化能力变差</li>
+                            <li><strong>教训：</strong>仅仅增加实体密度还不够，<span class="highlight">任务复杂度同样重要</span></li>
+                        </ul>
+
+                        <h3>2. Union 版本的提升</h3>
+                        <ul>
+                            <li><span class="checkmark">✓</span> 平均提升 +3.26，大部分基准都有提升</li>
+                            <li><strong>原因：</strong>多源信息整合迫使模型进行复杂推理</li>
+                            <li><strong>意义：</strong>证明了结构复杂度的重要性</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3>3. Reverse-Union 版本的最佳效果</h3>
+                        <ul>
+                            <li><span class="checkmark">✓</span> 平均提升 +4.34，在大多数基准上最好</li>
+                            <li><strong>原因：</strong>
+                                <ul>
+                                    <li>不仅结构复杂，还有逆向推理设计</li>
+                                    <li>杜绝了关键词搜索捷径</li>
+                                    <li>先演绎 → 再规划 → 再搜索（锻炼高级认知能力）</li>
+                                </ul>
+                            </li>
+                            <li><strong>特别优势：</strong>在 WideSearch 上提升最大（+10.92）</li>
+                        </ul>
+
+                        <div class="solution-box" style="margin-top: 20px;">
+                            <strong>结论：</strong>任务复杂度的递进设计至关重要。Reverse-Union 通过逆向推理，从根本上提升了代理的<span class="highlight">规划和推理能力</span>。
+                        </div>
+                    </div>
+                </div>
+            </section>

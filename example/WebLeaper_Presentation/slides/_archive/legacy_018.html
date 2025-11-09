@@ -1,0 +1,85 @@
+            <section>
+                <h2>核心结果 (2)：不仅做得更好，而且用时更少</h2>
+
+                <div style="text-align: center; margin: 20px 0;">
+                    <img src="presentation_images/tool_call_performance_scatter.png" alt="效率效果散点图" style="max-height: 400px;">
+                    <p class="image-caption">效率（工具调用次数）vs 效果（任务得分）对比</p>
+                </div>
+
+                <div class="observation-box">
+                    <p><strong>"左上角"的含义：</strong></p>
+                    <ul>
+                        <li><strong>左</strong> (Less Tool Calls) → 更高效</li>
+                        <li><strong>上</strong> (Higher Score) → 更有效</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>核心发现：</strong>在所有四个基准上，蓝点（WebLeaper）都稳定地出现在橙点（基线）的<span class="highlight">左上角</span>。</p>
+                </div>
+
+                <div class="two-columns" style="margin-top: 20px;">
+                    <div>
+                        <h3>具体数据示例：GAIA</h3>
+                        <table>
+                            <tr>
+                                <th>模型</th>
+                                <th>分数</th>
+                                <th>步数</th>
+                            </tr>
+                            <tr>
+                                <td class="best">WebLeaper</td>
+                                <td class="best">73.2</td>
+                                <td class="best">12</td>
+                            </tr>
+                            <tr>
+                                <td>WebSailor</td>
+                                <td>53.2</td>
+                                <td>18</td>
+                            </tr>
+                            <tr>
+                                <td><strong>提升</strong></td>
+                                <td class="best">+20</td>
+                                <td class="best">-6</td>
+                            </tr>
+                            <tr>
+                                <td><strong>改进率</strong></td>
+                                <td class="best">+38%</td>
+                                <td class="best">-33%</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div>
+                        <h3>具体数据示例：BrowseComp</h3>
+                        <table>
+                            <tr>
+                                <th>模型</th>
+                                <th>分数</th>
+                                <th>步数</th>
+                            </tr>
+                            <tr>
+                                <td class="best">WebLeaper</td>
+                                <td class="best">38.8</td>
+                                <td class="best">8</td>
+                            </tr>
+                            <tr>
+                                <td>最强基线</td>
+                                <td>15.7</td>
+                                <td>14</td>
+                            </tr>
+                            <tr>
+                                <td><strong>提升</strong></td>
+                                <td class="best">+23.1</td>
+                                <td class="best">-6</td>
+                            </tr>
+                            <tr>
+                                <td><strong>改进率</strong></td>
+                                <td class="best">+147%</td>
+                                <td class="best">-43%</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="solution-box" style="margin-top: 20px;">
+                    <strong>结论：</strong>这完美印证了我们的核心假设：<span class="highlight">效率和效果不是零和博弈</span>。通过优化效率，我们可以同时提升效果。我们的代理学会了如何<strong>"聪明地"工作</strong>，而不是<strong>"费力地"工作</strong>。
+                </div>
+            </section>

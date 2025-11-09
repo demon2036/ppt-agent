@@ -1,0 +1,62 @@
+            <section class="ultra-dense-slide">
+                <h2>深入分析 (1)：为何 Reverse-Union 效果最好？（1/2）</h2>
+
+                <h3>不同数据源版本的性能对比</h3>
+
+                <table style="font-size: 0.80em; margin-top: 20px;">
+                    <tr>
+                        <th>Data Source</th>
+                        <th>BrowseComp</th>
+                        <th>WideSearch</th>
+                        <th>GAIA</th>
+                        <th>Seal-0</th>
+                        <th>xbench-DS</th>
+                        <th>Avg.</th>
+                    </tr>
+                    <tr>
+                        <td>WebSailor-V2-5k</td>
+                        <td>25.17</td>
+                        <td>33.15</td>
+                        <td>67.69</td>
+                        <td>34.23</td>
+                        <td>60.00</td>
+                        <td>44.05</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Basic-5k</strong></td>
+                        <td style="color: var(--color-warning-red);">20.67 (−4.50)</td>
+                        <td style="color: var(--color-warning-red);">32.26 (−0.89)</td>
+                        <td style="color: var(--color-warning-red);">40.78 (−26.91)</td>
+                        <td style="color: var(--color-warning-red);">30.03 (−4.20)</td>
+                        <td style="color: var(--color-warning-red);">58.33 (−1.67)</td>
+                        <td style="color: var(--color-warning-red);">36.41 (−7.64)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Union-5k</strong></td>
+                        <td style="color: var(--color-success-green);">27.50 (+2.33)</td>
+                        <td style="color: var(--color-success-green);">41.70 (+8.55)</td>
+                        <td style="color: var(--color-success-green);">69.90 (+2.21)</td>
+                        <td style="color: var(--color-success-green);">35.14 (+0.82)</td>
+                        <td style="color: var(--color-success-green);">62.33 (+2.33)</td>
+                        <td class="best">47.31 (+3.26)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reverse-Union-10k</strong></td>
+                        <td style="color: var(--color-success-green);">27.67 (+2.50)</td>
+                        <td style="color: var(--color-success-green);">44.07 (+10.92)</td>
+                        <td style="color: var(--color-warning-red);">66.99 (−0.70)</td>
+                        <td style="color: var(--color-success-green);">37.24 (+3.01)</td>
+                        <td style="color: var(--color-success-green);">66.00 (+6.00)</td>
+                        <td class="best">48.39 (+4.34)</td>
+                    </tr>
+                </table>
+
+                <div class="insight-box" style="margin-top: 16px;">
+                    <strong>关键观察：</strong>
+                    <ul style="margin-top: 10px;">
+                        <li>Basic 版本在 GAIA 上<span style="color: var(--color-warning-red);"> 大幅下降 −26.91</span>，说明任务过于简单</li>
+                        <li>Union 版本<span style="color: var(--color-success-green);"> 平均提升 +3.26</span>，证明结构复杂度重要</li>
+                        <li>Reverse-Union<span class="highlight"> 平均提升 +4.34</span>，效果最佳</li>
+                    </ul>
+                </div>
+            </section>

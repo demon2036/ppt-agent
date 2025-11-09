@@ -1,0 +1,37 @@
+            <section class="large-padding">
+                <h2>探究根源：为何代理会"兜圈子"？</h2>
+                <div class="observation-box">
+                    效率低下的根本原因在于训练数据的<span class="highlight">"实体稀疏性" (Entity Sparsity)</span>
+                </div>
+
+                <div class="two-columns">
+                    <div>
+                        <h3>实体稀疏性是什么？</h3>
+                        <ul>
+                            <li>传统数据合成：一个问题只提供<strong>极少数目标实体</strong>（1-3个）</li>
+                            <li>例：问"谁获得了2020年诺贝尔文学奖？" 答案只有1个实体</li>
+                            <li>导致模型在有限上下文中<strong>缺乏学习机会</strong></li>
+                        </ul>
+
+                        <h3 style="margin-top: 15px;">稀疏性的两大恶果</h3>
+                        <p style="margin: 8px 0;"><strong>实践层面：</strong>一次任务只能学到1-2个"知识点"，无法学会高效"捞针"</p>
+                        <p style="margin: 8px 0;"><strong>理论层面：</strong>评估指标失效（见右侧）</p>
+                    </div>
+
+                    <div>
+                        <h3>理论证明（核心洞见）</h3>
+                        <div class="formula-box" style="padding: 15px; margin: 12px 0; font-size: 1.2em;">
+                            \[\text{ISE} = \frac{n}{T}\]
+                            \[\text{Var}(\text{ISE}) = \mathcal{O}\left(\frac{1}{n}\right)\]
+                        </div>
+
+                        <div class="insight-box" style="padding: 12px; margin-top: 15px; font-size: 0.9em; line-height: 1.4;">
+                            <strong>命题 1 解读：</strong>ISE（信息寻求效率）的方差与实体数量 n 成反比。
+                            <br>
+                            <strong>含义：</strong>实体稀疏时，效率测量极不稳定。就像<span class="highlight">用晃动的尺子量长度</span>。
+                            <br>
+                            <strong>结论：</strong>必须<span class="highlight">构建实体密集 (n 大) 的任务</span>。
+                        </div>
+                    </div>
+                </div>
+            </section>

@@ -1,0 +1,28 @@
+            <section class="dense-slide">
+                <h2>强化学习：混合奖励系统（1/2）</h2>
+                <div class="insight-box">
+                    <strong>核心观点：</strong>针对实体密集型任务的奖励稀疏和评估困难问题，设计混合奖励系统
+                </div>
+
+                <h3 style="margin-top: 25px;">RL 面临的困境</h3>
+
+                <div class="observation-box">
+                    <p><strong>1. 奖励稀疏 (Reward Sparsity)</strong></p>
+                    <ul>
+                        <li>问题：几十个实体全对才给奖励</li>
+                        <li>后果：模型永远学不会（正反馈太少）</li>
+                    </ul>
+                </div>
+
+                <div class="observation-box">
+                    <p><strong>2. 评估困难 (Evaluation Challenge)</strong></p>
+                    <ul>
+                        <li><strong>Exact Match:</strong> 太死板，无法处理同义词（"USA" vs "United States"）</li>
+                        <li><strong>LLM-as-a-Judge:</strong> 又贵又不稳定，难以大规模应用</li>
+                    </ul>
+                </div>
+
+                <div class="solution-box" style="margin-top: 20px;">
+                    <strong>解决方案：</strong>设计软 F-Score (Soft F-Score) 混合奖励，兼顾细粒度反馈和智能评估
+                </div>
+            </section>

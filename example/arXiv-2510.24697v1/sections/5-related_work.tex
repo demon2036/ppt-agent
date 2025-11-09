@@ -1,0 +1,14 @@
+\section{Related Work}
+\label{sec:related_work}
+
+\subsection{Information Seeking Agent}
+\label{sec:InformationSeekingAgent}
+
+LLM-powered information-seeking agents can be broadly categorized into 3 streams: (1) enhancing core models via supervised fine-tuning~\citep{zeng2023agenttuning,wu2025webdancerautonomousinformationseeking,li2025websailornavigatingsuperhumanreasoning,li2025websailorv2bridgingchasmproprietary,tao2025webshaper,su2025scalingagentscontinualpretraining,fang2025generalagenticintelligenceenvironment}; (2) advancing agent architecture for improved planning and robustness~\citep{qiao2025webresearcher,xu2025amemagenticmemoryllm,li2025raspberry}; and (3) developing multi-agent systems for collaborative problem-solving~\citep{wu2023autogen,hong2023metagpt}.
+Our work aligns with the first category but addresses a key limitation. Prior methods often train on tasks focused on correctness with single-fact answers, which is insufficient for large-scale information gathering. We posit that the number of entities in an answer—its entity richness—is a critical dimension for evaluating an agent's completeness and efficiency. This paper aims to bridge this gap by creating and utilizing entity-rich QA data to enhance agent capabilities for comprehensive information acquisition.
+
+\subsection{Agent Data Synthesis}
+\label{sec:AgentDataSynthesis}
+
+Synthetic data generation is pivotal for agent training, with primary applications in tool use~\citep{wu2025webdancerautonomousinformationseeking, tao2025webshaper, shen2025ragsynthsyntheticdatarobust,fang2025towards}, code generation~\citep{jimenez2024swebench,shen2025shortcutsbench,xu2025kodcode, shao2025case2code}, and GUI automation~\citep{xu2025agenttrek, sun-etal-2025-os, pahuja2025explorer}. These efforts primarily combat data scarcity.
+Within the information-seeking domain, existing data synthesis approaches increase task difficulty through multi-step reasoning~\citep{wu-etal-2025-webwalker,wu2025webdancerautonomousinformationseeking,tao2025webshaper} or long-horizon planning~\citep{qiao2025webresearcher}. We contend that such methods often overlook the semantic richness of the training data itself. In contrast, our approach centers on synthesizing QA data with high entity-level complexity. We hypothesize that this focus on data semantics is a crucial and complementary path to improving agent reasoning and world knowledge alignment.

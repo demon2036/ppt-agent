@@ -1,0 +1,47 @@
+            <section class="dense-slide" style="font-size: 0.85em;">
+                <h2>轨迹构建：如何定义"好"的解法？（1/2）</h2>
+                <div class="insight-box" style="padding: 0.5em; margin: 0.5em 0;">
+                    <strong>核心：</strong>好的解法兼具<span class="highlight">准确性</span>和<span class="highlight">效率</span>。定义 ISR 和 ISE 两个核心指标。
+                </div>
+
+                <div class="two-columns" style="gap: 1.5em; margin-top: 0.8em;">
+                    <div>
+                        <h3 style="margin-bottom: 0.4em;">信息寻求率 (ISR)</h3>
+                        <div class="formula-box" style="padding: 0.8em; margin: 0.6em 0;">
+                            \[\text{ISR} = \frac{|R \cap O|}{|R|}\]
+                        </div>
+                        <ul style="margin: 0.4em 0; line-height: 1.4; font-size: 0.95em;">
+                            <li><strong>衡量：</strong>找得全不全（召回率/覆盖率）</li>
+                            <li><strong>R:</strong> 目标实体集 (Ground Truth)</li>
+                            <li><strong>O:</strong> 代理找到的实体集</li>
+                            <li><strong>范围：</strong>[0, 1]，越高越好</li>
+                        </ul>
+
+                        <div class="observation-box" style="margin-top: 0.8em; padding: 0.5em; font-size: 0.9em;">
+                            <strong>示例：</strong>如果目标有10个实体，代理找到了8个，则 ISR = 8/10 = 0.8
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 style="margin-bottom: 0.4em;">信息寻求效率 (ISE)</h3>
+                        <div class="formula-box" style="padding: 0.8em; margin: 0.6em 0;">
+                            \[\text{ISE} = \frac{n}{T}\]
+                        </div>
+                        <ul style="margin: 0.4em 0; line-height: 1.4; font-size: 0.95em;">
+                            <li><strong>衡量：</strong>找得快不快（单位步数的实体数）</li>
+                            <li><strong>n:</strong> 目标实体总数</li>
+                            <li><strong>T:</strong> 总工具调用步数</li>
+                            <li><strong>含义：</strong>每一步平均找到多少目标实体</li>
+                        </ul>
+
+                        <div class="observation-box" style="margin-top: 0.8em; padding: 0.5em; font-size: 0.9em;">
+                            <strong>示例：</strong>如果10个实体用了5步找到，则 ISE = 10/5 = 2.0（每步找到2个实体）
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 1em 0 0.4em 0;">轨迹筛选策略 - 双重过滤标准</h3>
+                <div class="solution-box" style="padding: 0.6em; margin: 0.4em 0; text-align: center;">
+                    <p style="font-size: 1.05em; margin: 0;"><strong>标准：</strong>ISR > α (足够准确) <strong>且</strong> ISE > β (足够高效)</p>
+                </div>
+            </section>

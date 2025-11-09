@@ -1,0 +1,82 @@
+            <section>
+                <h2>案例分析：WebLeaper vs. 普通代理</h2>
+                <div class="insight-box">
+                    <strong>示例任务：</strong>"找出与《蝇王》作者同一国籍，且获得过诺贝尔文学奖的另一位作家。"
+                </div>
+
+                <div class="comparison-box">
+                    <div class="comparison-left">
+                        <h3>❌ 普通代理的思考路径</h3>
+                        <pre style="font-size: 0.8em; line-height: 1.6;">
+Step 1: Search("蝇王 作者")
+        → 找到 "William Golding"
+
+Step 2: Search("William Golding 国籍")
+        → 找到 "英国"
+
+Step 3: Search("诺贝尔奖作家名单")
+        → 得到一个长列表（上百名）
+
+Step 4: Search("A 的国籍")
+Step 5: Search("B 的国籍")
+...
+Step N: 逐一排查（非常低效）
+
+<strong>总步数: 15-20 步</strong>
+<strong>特点: 机械、繁琐、缺乏规划</strong>
+                        </pre>
+                    </div>
+
+                    <div class="comparison-right">
+                        <h3>✅ WebLeaper 的思考路径</h3>
+                        <pre style="font-size: 0.8em; line-height: 1.6;">
+Step 1: Search("《蝇王》作者 国籍")
+        → <strong>一步到位：</strong>
+           William Golding, 英国 ✓
+
+Step 2: Search("获得诺贝尔奖的英国作家")
+        → <strong>直接将多个条件组合成高效查询</strong>
+        → 返回：
+           Winston Churchill,
+           Kazuo Ishiguro, ...
+
+Step 3: Visit(相关页面)
+        → 找到答案 ✓
+
+<strong>总步数: 3-4 步</strong>
+<strong>特点: 智能、高效、有规划</strong>
+                        </pre>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h3>对比分析</h3>
+                    <table>
+                        <tr>
+                            <th>维度</th>
+                            <th>普通代理</th>
+                            <th>WebLeaper</th>
+                        </tr>
+                        <tr>
+                            <td><strong>查询策略</strong></td>
+                            <td>单一、线性</td>
+                            <td class="best">组合、并行</td>
+                        </tr>
+                        <tr>
+                            <td><strong>信息整合</strong></td>
+                            <td>逐步累积</td>
+                            <td class="best">一次到位</td>
+                        </tr>
+                        <tr>
+                            <td><strong>步数</strong></td>
+                            <td>15-20</td>
+                            <td class="best">3-4</td>
+                        </tr>
+                        <tr>
+                            <td><strong>效率</strong></td>
+                            <td>低（20%）</td>
+                            <td class="best">高（75%）</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>

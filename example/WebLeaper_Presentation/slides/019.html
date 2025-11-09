@@ -1,0 +1,79 @@
+            <section class="ultra-dense-slide" style="font-size: 0.78em;">
+                <h2>实验设置：在严苛环境中验证实力（1/3）</h2>
+
+                <div class="two-columns" style="gap: 1em;">
+                    <div>
+                        <h3 style="margin-bottom: 0.4em;">基准 (Benchmarks)</h3>
+                        <table style="font-size: 0.85em; width: 100%; border-collapse: collapse;">
+                            <tr style="background: var(--color-deep-blue); color: white;">
+                                <th style="padding: 0.3em; border: 1px solid #ddd;">基准</th>
+                                <th style="padding: 0.3em; border: 1px solid #ddd;">描述</th>
+                                <th style="padding: 0.3em; border: 1px solid #ddd;">指标</th>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;"><strong>BrowserComp</strong></td>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;">复杂浏览任务</td>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;">Pass@1</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;"><strong>GAIA</strong></td>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;">通用 AI 助手</td>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;">Pass@1</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;"><strong>xbench-DS</strong></td>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;">深度搜索评估</td>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;">Pass@1</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;"><strong>Seal-0</strong></td>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;">复杂问答任务</td>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;">Pass@1</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;"><strong>WideSearch</strong></td>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;">宽度搜索能力</td>
+                                <td style="padding: 0.25em; border: 1px solid #ddd;">SR, F1</td>
+                            </tr>
+                        </table>
+
+                        <h3 style="margin: 0.8em 0 0.4em 0;">训练配置</h3>
+                        <ul style="margin: 0; line-height: 1.3; font-size: 0.9em;">
+                            <li><strong>基础模型：</strong>Qwen3-30B-A3B-Thinking-2507</li>
+                            <li><strong>训练框架：</strong>Megatron</li>
+                            <li><strong>两种设置：</strong>
+                                <ul style="margin: 0.2em 0; font-size: 0.95em;">
+                                    <li><strong>Base (B):</strong> WebLeaper + WebSailor-V2 (5k/10k)</li>
+                                    <li><strong>Comprehensive (C):</strong> 混合更大规模训练语料</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 style="margin-bottom: 0.4em;">基线模型（Baselines）</h3>
+                        <div class="insight-box" style="padding: 0.5em; margin: 0.3em 0;">
+                            <p style="margin: 0 0 0.3em 0;"><strong>闭源/专有代理：</strong></p>
+                            <ul style="margin: 0; line-height: 1.3; font-size: 0.9em;">
+                                <li>Claude-4-Sonnet</li>
+                                <li>OpenAI-o3</li>
+                                <li>OpenAI DeepResearch</li>
+                            </ul>
+                        </div>
+                        <div class="insight-box" style="padding: 0.5em; margin: 0.5em 0 0 0;">
+                            <p style="margin: 0 0 0.3em 0;"><strong>开源代理：</strong></p>
+                            <ul style="column-count: 2; column-gap: 0.8em; margin: 0; line-height: 1.3; font-size: 0.85em;">
+                                <li>ASearcher-Web-32B</li>
+                                <li>DeepDive-32B</li>
+                                <li>DeepDiver-V2-38B</li>
+                                <li>MiroThinker-32B</li>
+                                <li>Kimi-K2-1T</li>
+                                <li>WebExplorer-8B</li>
+                                <li>WebDancer-32B</li>
+                                <li>WebSailor-32B</li>
+                                <li>WebShaper-32B</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
